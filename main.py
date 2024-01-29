@@ -1382,3 +1382,7 @@ from random import randint
 #     print("Количество", i, "=", tpl.count(i))
 
 print("Данные для добавления на GitHub")
+
+print("Данные внесенные с другой машины")
+
+
