@@ -1372,11 +1372,12 @@ from random import randint
 # print(a)
 
 
-tpl = tuple(input("Введите по порядку, без пробелов, элементы кортежа: "))
-print(tpl)
-res = []
-for el in tpl:
-    if el not in res:
-        res.append(el)
-for i in res:
-    print("Количество", i, "=", tpl.count(i))
+# tpl = tuple(input("Введите по порядку, без пробелов, элементы кортежа: "))
+# print(tpl)
+# res = []
+# for el in tpl:
+#     if el not in res:
+#         res.append(el)
+# for i in res:
+#     print("Количество", i, "=", tpl.count(i))
+
