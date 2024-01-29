@@ -1381,3 +1381,4 @@ from random import randint
 # for i in res:
 #     print("Количество", i, "=", tpl.count(i))
 
+print("Данные для добавления на GitHub")
