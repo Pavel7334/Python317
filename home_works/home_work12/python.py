@@ -25,6 +25,13 @@ data = {
     }
 }
 
+
+for x in data:
+    print(x)
+    for y in data[x]:
+        print("\t",  y, ":", data[x][y])
+
+
 while True:
     person = input("Введите имя пользователя: ").capitalize()
     if person in data.keys():

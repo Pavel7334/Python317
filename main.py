@@ -1272,6 +1272,7 @@ import time
 
 from random import randint
 
+
 # def run(a, b):
 #     return tuple(randint(a, b) for i in range(10))
 #
@@ -1722,24 +1723,24 @@ from random import randint
 # print(d)
 # print(d2)
 
-d = {
-    'first': {
-        1: "one",
-        2: "two",
-        3: "three"
-    },
-    'second': {
-        4: "four",
-        5: "five"
-    }
-}
-
-print(d)
-
-for x in d:
-    print(d[x])
-    for y in d[x]:
-        print("\t", y, ":", d[x][y])
+# d = {
+#     'first': {
+#         1: "one",
+#         2: "two",
+#         3: "three"
+#     },
+#     'second': {
+#         4: "four",
+#         5: "five"
+#     }
+# }
+#
+# print(d)
+#
+# for x in d:
+#     print(d[x])
+#     for y in d[x]:
+#         print("\t", y, ":", d[x][y])
 
 
 # d = {
@@ -1790,3 +1791,241 @@ for x in d:
 #     else:
 #         d[s].append(i)
 # print(d)
+
+
+# num = [2, 5, 7, 2, 7, 88, 22, 3, 45, 767, 99, 22]
+#
+# N = 10
+# a = []
+# for i in num:
+#     a.append(i)
+# print(a)
+#
+# for i in range(N - 1):
+#     for j in range(N - i - 1):
+#         if a[j] > a[j + 1]:
+#             a[j], a[j + 1] = a[j + 1], a[j]
+#
+# print(a)
+
+
+# def bubble_sort(list1):
+#     for i in range(0, len(list1) - 1):
+#         for j in range(len(list1) - 1):
+#             if list1[j] > list1[j + 1]:
+#                 temp = list1[j]
+#                 list1[j] = list1[j + 1]
+#                 list1[j + 1] = temp
+#     return list1
+#
+#
+# list1 = [5, 3, 8, 6, 7, 2, 44, 22, 77, 99, 2234, 897]
+# print(list1)
+# print(bubble_sort(list1))
+
+
+#                                                      ZIP
+
+
+# one = [1, 2, 3]
+# two = ["one", "two", "three"]
+#
+# d = dict(zip(one,two))
+# print(d)
+#
+# # lst = list(zip(one, two))
+# # print(lst)
+#
+# lst = list(zip(one))
+#
+# print(lst)
+#
+# f = {k: v for k, v in zip(two, one)}
+# print(f)
+
+
+# one = {"name": "Igor", "surname": "Doe", "job": "Consultant"}
+# two = {"name": "Irina", "surname": "Smith", "job": "Manager"}
+# three = {"name": "Irina", "surname": "Smith", "job": "Manager"}
+#
+#
+# for (k1, v1), (k2, v2), (k3, v3) in zip(one.items(), two.items(), three.items()):
+#     print(k1, "->", v1)
+#     print(k2, "->", v2)
+#     print(k3, "->", v3)
+
+
+# lst = [(1, 'one'), (2, 'two'), (3, 'three')]
+# d = {1: 'one', 2: 'two', 3: 'three'}
+# a, b = zip(*d)
+# print(a)
+# print(b)
+# print(d)
+
+# a = {1: 'one', 2: 'two'}
+# b = {3: 'three', 4: 'four'}
+# print({**a, **b})
+#
+#
+# for k, v in {**a, **b}.items():
+#     print(k, "->", v)
+
+
+# data = [5, 7, 9, 4, 1, 3, 5, 8, 6, 4]
+# data = ["red", "green", "blue"]
+#
+# for num, color in enumerate(data, 1):
+#     print(num, ") ", color, sep="")
+
+# j = 1
+# for i in data:
+#     print(j, ")", i, sep="")
+#     j +=1
+
+# a = [1, 2, 3]
+#
+# b = [*a, 4, 5, 6]
+#
+# print(b)
+
+
+# def func(*args):
+#     return args
+#
+#
+# print(func(5, 6, 7, 8, 9, 0, "abc"))
+# print(func())
+
+
+# def summa(*args):
+#     res = 0
+#     for i in args:
+#         res += i
+#     return res
+#
+#
+# print(summa(1, 4, 5, 4, 3, 6, 6, 54, 6, 6, 4, 6, 6, 6, 4))
+
+
+# def di(*di):
+#     dictionary = {}
+#     for i in di:
+#         dictionary.update({i: i})
+#
+#     return dictionary
+#
+#
+# print(di(1, "one", 3, 4, "two", 6, 7, (8, 3, 5, 6, 78)))
+
+
+# def foo(*args):
+#     average = sum(args) / len(args)
+#     print(average)
+#     res = []
+#     for num in args:
+#         if num < average:
+#             res.append(num)
+#
+#     return res
+#
+#
+# print(foo(1, 2, 3, 4, 5, 6, 7, 8, 9))
+# print(foo(3, 6, 1, 9, 5))
+
+
+# def func(a, *args):
+#     return a, args
+#
+#
+# print(func(5))
+# print(func(5, 9, 8, 7, 6))
+
+# def print_scores(student, *scores):
+#     print("Name: ", student)
+#     for score in scores:
+#         print(score, end=" ")
+#     print()
+#
+#
+# print_scores("Roman", 5, 4, 3, 5, 4, 5, 5, 3, 5)
+# print_scores("Nikita", 5, 5, 3, 5)
+
+
+# def func(**kwargs):
+#     return kwargs
+#
+#
+# print(func(a=1, b=2, c=3))
+# print(func())
+# print(func(name="Python"))
+
+
+# def intro(**kwargs):
+#     for k, v in kwargs.items():
+#         print(k, "is", v)
+#     print()
+#
+#
+# intro(name="Irina", surname="Sharma", age=22)
+# intro(name="Igor", surname="Wood", email="igor@gmail.com", age=22, phone=987654321)
+
+
+# def func(a, b, *args, dd=5, cc=7, **kwargs):
+#     return a, b, args, kwargs, dd, cc
+#
+#
+# print(func(1, 2, 3, 4, 5, aa=1, bb=2, cc=3))
+
+
+# def db(**kwargs):
+#     my_dict.update(**kwargs)
+#
+#
+# my_dict = {"one": "first"}
+# db(k1=22, k2=31, k3=11, k4=91)
+# db(name="Bob", age=31, weight=61, eyes_color="grey")
+# print(my_dict)
+
+# name = "Tom"  # Глобальная переменная
+# surname = ""
+#
+#
+# def hi():
+#     global name, surname
+#     name = "Sam"  # Локальная переменная
+#     surname = "Johnson"
+#     print("Hello", name, surname)
+#
+#
+# def bye():
+#     print("Good bye", name)
+#
+#
+# print(name)
+# hi()
+# bye()
+# print(name)
+# print(surname)
+
+# i =5
+#
+#
+# def foo(args=i):
+#     print(args)
+#
+# i = 6
+# foo() # 5
+
+
+# def func(a):  # a = 3
+#     x = 2
+#
+#     def inner():
+#         x = 6
+#         print("x:", x)
+#         return a + x    # 3 + 6
+#
+#     return inner()
+#
+#
+# print(func(3))
