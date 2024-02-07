@@ -1385,6 +1385,9 @@ from random import randint
 #
 # print("Данные внесенные с другой машины")
 
+
+#                                               GIT
+
 # git --version
 # git --help
 #
@@ -1470,3 +1473,320 @@ from random import randint
 # git pull
 # - забирает изменения с удаленного репозитория в локальный
 
+# s = ['ab_1', 'ac_2', 'bc_1', 'bc_2']
+
+# a = [x for x in s if 'a' not in x]
+# a = ['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in s]
+# a = ['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in s if x[1] == 'c']
+# print(a)
+
+# print(['A' + x[1:] if x[0] == 'a' else 'B' + x[1:] for x in ['ab_1', 'ac_2', 'bc_1', 'bc_2'] if x[1] == 'c'])
+
+# a = {0, 1, 2, 3}
+# b = {4, 3, 2, 1}
+# # c = a | b     # сложение уникальных значений
+# # c = a & b       # пересечение
+# # c = a - b         # вычитание элементов из a
+# c = a ^ b           # разные значения в обоих переменных
+# # c = a.union(b)
+# print(c)
+#
+# a -= b
+# print(a)
+
+# s1 = {1, 2}
+# s2 = {3}
+# s3 = {4, 5}
+# s4 = {3, 2, 6}
+# s5 = {6}
+# s6 = {7, 8}
+# s7 = {9, 8}
+#
+# # s = s1.union(s2, s3, s4, s5, s6, s7)
+# s = s1 | s2 | s3 | s4 | s5 | s6 | s7
+# print(s)
+# print(len(s))
+# print(min(s))
+# print(max(s))
+
+# s1 = "Hello"
+# s2 = "How are you"
+#
+# s = set(s1) & set(s2)
+# print(s)
+# for i in s:
+#     print(i, end=" ")
+
+
+# s1 = "Python"
+# s2 = "Programming language"
+#
+# print(s1 - s2)
+#
+# # for i in s:
+# #     print(i, end=" ")
+
+# c1 = set("Python")
+# c2 = set("Programming language")
+# print(c1-c2)
+
+# drawing = {'Марина', 'Женя', 'Света'}
+# music = {'Костя', 'Женя', 'Илья'}
+#
+# one_hobby = drawing ^ music
+# print(one_hobby)
+# both_hobby = drawing & music
+# print(both_hobby)
+#
+# drawing = drawing - both_hobby
+# print(drawing)
+
+
+# a = {0, 1, 2, 3, 4}
+# b = {3, 2, 1}
+# print(a >= b)
+
+# s = frozenset([1, 2, 3, 4, 5, 6])
+# print(s)
+
+#                                                      СЛОВАРИ!!!!
+
+# s = [1, 2, 3]
+# d = {"one": 1, "two": 2, "thee": 3}
+# print(s[1])
+# print(d["two"])
+#
+# s1 = ["one", "two", "three"]
+# d1 = {1: "one", 2: "two", 3: "three"}
+# print(s1[1])
+# print(d1[2])
+
+# d = {(1, 2, 3, (2, 3)): "Кортеж"}
+#
+# print(d)
+
+# d = {'one': 1, 'two': 2}
+# print(d)
+# print(type(d))
+#
+# c = dict(one=1, two=2)
+# print(c)
+# print(type(c))
+
+# d1 = dict([("one", 1), ("two", 2)])
+#
+# print(d1)
+
+# d = {x: x ** 2 for x in range(7)}
+# print(d)
+
+# d = {"one": 1, "two": 2, "thee": 3}
+# print(d)
+# # print("two" in d)
+# # print(len(d))
+# #
+# # for key in d:
+# #     print(key, "->", d[key])
+# key = "one"
+# del d[key]
+# # try:
+# #     print(d[key])
+# # except KeyError:
+# #     print("Такого ключа не существует")
+# print(d)
+
+# d = {'x1': 3, 'x2': 7, 'x3': 5, 'x4': -1}
+# res = 1
+# for x in d:
+#     res *= d[x]
+# print(res)
+
+# d = {x: input("-> ") for x in range(1, 5)}
+#
+# print(d)
+# try:
+#     dislike = int(input("Какой элемент исключить: "))
+#     del d[dislike]
+# except (KeyError, ValueError):
+#     print("Такого ключа не существует")
+# print(d)
+
+# def is_palindrome(string: str) -> bool:
+#     if string != string[::-1]:
+#         return False
+#     return True
+#
+#
+# print(is_palindrome("aboba"))
+# print(is_palindrome("axc"))
+
+
+# goods = {
+#     "1": ["Core-i3-4330", 9, 4500],
+#     "2": ["Core i5-4670K", 3, 8500],
+#     "3": ["AMD FX-6300", 6, 3700],
+#     "4": ["Pentium G3220", 8, 2100],
+#     "5": ["Core i5-3450", 5, 6400],
+# }
+#
+# for key in goods:
+#     print(key, ") ", goods[key][0], " - ", goods[key][1], " шт. по ", goods[key][2], " руб.", sep="")
+#
+# while True:
+#     n = input("№: ")
+#     if n != "0":
+#         if n in goods:
+#             while True:
+#                 try:
+#                     count = int(input("Кол-во: "))
+#                     goods[n][1] += count
+#                     break
+#                 except ValueError:
+#                     print("Значение некорректное. Введите число")
+#         else:
+#             print("Такого ключа не существует")
+#     else:
+#         break
+#
+#
+# for key in goods:
+#     print(key, ") ", goods[key][0], " - ", goods[key][1], " шт. по ", goods[key][2], " руб.", sep="")
+
+
+# d = {'x1': 3, 'x2': 7, 'x3': 5}
+# print(d)
+# # del d['x1']
+# # d['x4'] = 10
+# # print(d)
+# # a = {'one': 1}
+# # c = d | a
+# # print(c)
+# print(d.values())
+# print(d.keys())
+# print(d.items())
+# # for key, value in d.items():
+# #     print(key, "->", value)
+# print(list(d))
+# print(list(d.values()))
+# print(list(d.items()))
+
+# d = {'x1': 3, 'x2': 7, 'x3': 5}
+#
+# d2 = d.copy()
+# print("d =", d)
+# print("d2 =", d2)
+#
+# d2["x4"] = 10
+# print(d2)
+# print(d)
+
+# d = {'x1': 3, 'x2': 7, 'x3': 5}
+# print(d["x1"])
+# value = d.get("x4", "Такого ключа не существует")
+# print(value)
+# item = d.pop("x4", "Такого ключа не существует")
+# print(item)
+# item2 = d.popitem()
+# print(item2)
+# print(d)
+#
+# d.clear()
+# print(d)
+
+# d = {'x1': 3, 'x2': 7, 'x3': 5}
+# print(d)
+# # item = d.setdefault("x4", 10)
+# # print(item)
+# # print(d)
+# a = {"one": 1, "two": 2}
+# a = list(a.items())
+# print(a)
+# d.update(a)
+# print(d)
+
+
+# x = {'a': 1, 'b': 2}
+# y = {'b': 3, 'c': 4}
+# z = x | y
+# print(z)
+
+# d = dict.fromkeys(['a', 'b', 'c'], 100)
+# print(d)
+
+# d = {'name': 'Kelly', 'age': 25, 'salary': 8000, 'city': 'New York'}
+# d['location'] = d.pop('city')
+# print(d)
+# d2 = dict()
+# d2['name'] = d.pop("name")
+# d2['salary'] = d.pop("salary")
+# print(d)
+# print(d2)
+
+d = {
+    'first': {
+        1: "one",
+        2: "two",
+        3: "three"
+    },
+    'second': {
+        4: "four",
+        5: "five"
+    }
+}
+
+print(d)
+
+for x in d:
+    print(d[x])
+    for y in d[x]:
+        print("\t", y, ":", d[x][y])
+
+
+# d = {
+#     'first': {
+#         1: {
+#             11: "abc",
+#             12: "abc",
+#             113: "abc",
+#         },
+#         2: {
+#             11: "abc"
+#         },
+#         3: {
+#             11: "abc"
+#         }
+#     },
+#     'second': {
+#         4: {
+#             11: "abc"
+#         },
+#         5:  {
+#             11: "abc"
+#         }
+#     }
+# }
+# print(d)
+#
+# for x in d:
+#     print(x)
+#     for y in d[x]:
+#         print("\t", y)
+#         for z in d[x][y]:
+#             print("\t\t", z, ":", d[x][y][z])
+
+# d = {'один': 1, 'два': 2, 'три': 3, 'четыре': 4}
+# d2 = {key: value for key, value in d.items() if value <= 2}
+# print(d2)
+
+# a = ["one", 1, 2, 3, "two", 10, 20, "three", 15, 36, 60, "four", -20]
+#
+# d = dict()
+# s = None
+#
+# for i in a:
+#     if type(i) == str:
+#         d[i] = []
+#         s = i
+#     else:
+#         d[s].append(i)
+# print(d)
