@@ -1272,7 +1272,6 @@ import time
 
 from random import randint
 
-
 # def run(a, b):
 #     return tuple(randint(a, b) for i in range(10))
 #
@@ -2029,3 +2028,207 @@ from random import randint
 #
 #
 # print(func(3))
+
+
+# def outer(who):
+#     def inner():
+#         print("Hello", who)
+#
+#     inner()
+#
+#
+# outer("World!")
+
+
+# def fun1():
+#     a = 6
+#
+#     def fun2(b):
+#         a = 4
+#         print(a + b)
+#
+#     print("a: ", a)
+#     fun2(4)
+#
+#
+# fun1()
+
+
+# x = 25
+# t = 0
+#
+#
+# def fn():
+#     global t
+#     a = 30
+#
+#     def inner():
+#         nonlocal a
+#         a = 35
+#
+#     inner()
+#     t = a
+#
+#
+# fn()
+# q = x + t
+#
+# print(q)
+
+
+# def fn1():
+#     x = 25
+#
+#     def fn2():
+#         x = 33
+#
+#         def fn3():
+#             x = 55
+#
+#         fn3()
+#         print("fn2.x =", x)
+#
+#     fn2()
+#     print("fn1.x =", x)
+#
+#
+# fn1()
+
+
+# def outer(a1, b1, a2, b2):
+#     a = 0
+#     b = 0
+#
+#     def inner():
+#         nonlocal a, b
+#         a = a1 + a2
+#         b = b1 + b2
+#         # print("a:", a)
+#         # print("b:", b)
+#
+#     inner()
+#     return [a, b]
+#
+#
+# print(outer(2, 3, -1, 4))
+
+# ЗАМЫКАНИЕ
+
+def outer(n):
+    def inner(x):
+        return n + x
+
+    return inner
+
+
+out1 = outer(5)
+print(out1(10))
+
+out2 = outer(6)
+print(out2(4))
+
+
+# def func1():
+#     a = 1
+#     b = "line"
+#     c = [1, 2, 3]
+#
+#     def func2():
+#         nonlocal a, b
+#         c.append(4)
+#         a = a + 1
+#         b = b + "_new"
+#         return a, b, c
+#
+#     return func2
+#
+#
+# func = func1()
+# print(func())
+
+# def func(city):
+#     count = 0
+#
+#     def inner():
+#         nonlocal count
+#         count += 1
+#         print(city, count)
+#
+#     return inner
+#
+#
+# res1 = func("Москва")
+# res1()
+# res1()
+#
+# res2 = func("Сочи")
+# res2()
+# res2()
+#
+# res1()
+
+# lambda - функция (выражение)
+
+# def func(x, y):
+#     return x + y
+#
+#
+# print(func(2, 3))
+#
+# print((lambda x, y, z: x + y + z)(2, 3, 4))
+#
+# variable = (lambda x, y: x + y)
+#
+# print(variable(2, 3))
+
+# print((lambda x, y: x ** 2 + y ** 2)(2, 5))
+
+# print((lambda a, b, c=3: a + b + c)(10, 20))
+
+# print((lambda *args: sum(args))(1, 2, 3, 4, 5, 6))
+# print((lambda *args: args)("a", "b", "c"))
+
+# c = (
+#     lambda x: x * 2,
+#     lambda x: x * 3,
+#     lambda x: x * 4,
+# )
+#
+# for t in c:
+#     print((t("abc_")))
+
+# def outer(n):
+#     def inner(x):
+#         return n + x
+#
+#     return inner
+#
+#
+# f = outer(5)
+# print(f(10))
+#
+#
+# def outer1(n):
+#     return lambda x: n + x
+#
+#
+# f1 = outer1(5)
+# print(f1(10))
+#
+# outer2 = lambda n: lambda x: n + x
+# f2 = outer2(5)
+# print(f2(10))
+#
+# print((lambda n: lambda x: n + x)(5)(10))
+
+# print((lambda n: lambda x: lambda y: n + x + y)(2)(4)(6))
+
+# print((lambda n: lambda x: lambda y: n+x+y)(int(input("Введите 1 число: ")))(int(input("Введите 2 число: ")))(int(input("Введите 3 число: "))))
+
+# d = {"b": 15, "a": 7, "c": 3}
+# print(d)
+# lst = list(d.items())
+# print(lst)
+# lst.sort(key=lambda i: i[1])
+# print(lst)
+# print(dict(lst))
