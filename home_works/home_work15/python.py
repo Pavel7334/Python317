@@ -1,0 +1,1 @@
+print(list(filter(lambda el: el == el[::-1], ['madam', 'fire', 'tomato', 'book', 'kiosk', 'mom'])))
