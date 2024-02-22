@@ -1272,7 +1272,6 @@ import time
 
 from random import randint
 
-
 # def run(a, b):
 #     return tuple(randint(a, b) for i in range(10))
 #
@@ -1467,7 +1466,7 @@ from random import randint
 # 2) git commit -m "added print"
 # 3) git push
 # - с локального репозитория переносит файлы на удаленный репозиторий
-# 
+#
 # git clone https://github.com/Helen-prog/Python317.git
 # - клонирование репозитория
 #
@@ -2602,3 +2601,167 @@ from random import randint
 # file_name = "date.txt"
 # print(fr"home\{dir_name}\{file_name}")
 
+
+# def square(n):
+#     """Принимает число n, возвращает квадрат числа n."""
+#     return n ** 2
+#
+#
+# print(square(5))
+# print(square.__doc__)
+
+
+# from math import pi
+#
+#
+# def cylinder(r, h):
+#     """
+#     Вычисляет площадь цилиндра.
+#
+#     Вычисляет площадь цилиндра на основании заданной высоты и радиуса основания
+#     :param r: положительное число, радиус основания цилиндра
+#     :param h: положительное число, высота цилиндра
+#     :return: положительное число, площадь цилиндра
+#     """
+#     return 2 * pi * r * (r + h)
+#
+#
+# print(cylinder(2, 4))
+# print(cylinder.__doc__)
+
+
+# while True:
+#     n = input("-> ")
+#     if n != "-1":
+#         print(ord(n))
+#     else:
+#         break
+
+
+# s = "Test string for me"
+# arr = [ord(x) for x in s]
+# print("ASCII кода:", arr)
+# print("Среднее арифметическое", [int(sum(arr) / len(arr))] + arr)
+# arr += [ord(x) for x in input("-> ")[:3] if ord(x) not in arr]
+# print(arr)
+# print(arr.count(arr[-1]) -1)
+#
+# arr.sort(reverse=True)
+# print(arr)
+
+#
+# print(chr(97))      # chr Возвращает сам букву из цифр
+# print(chr(943747))
+
+# a = 97
+# b = 122
+#
+# if a < b:
+#     a, b = b, a
+#
+# for i in range(b, a + 1):
+#     print(chr(i), end=" ")
+
+
+# print("apple" == "Apple")
+# print("apple" > "Apple")
+
+
+# from random import randint
+#
+# shortest = 7
+# longest = 10
+# min_ascii = 33
+# max_ascii = 126
+#
+#
+# def random_password():
+#     res = ""
+#     for i in range(randint(shortest, longest)):
+#         rand_char = chr(randint(min_ascii, max_ascii))
+#         res += rand_char
+#     return res
+#
+#
+# print("Ваш случайный пароль:", random_password())
+
+
+# s = "hello, WORLD! I am learning Python."
+# print(s.capitalize())   # Выводит первый символ в верхнем регистре, остальные в нижнем
+# print(s.lower())   # выводит всё в нижнем регистре
+# print(s.upper())   # выводит всё в верхнем регистре
+# print(s.swapcase())   # HELLO, world! i AM LEARNING pYTHON.
+# print(s.title())   # Hello, World! I Am Learning Python.
+#
+# print(s.count("h"))  # посчитает сколько букв "h" в строке
+# print(s.count("h", 3))  # посчитает сколько букв "h" в строке
+# print(s.count("h",3, 10))  # посчитает сколько букв "h" в строке
+#
+# print(s.find("Python"))  # возвращает индекс первое вхождение подстроки в строку, если такой подстроки нет возвращает -1
+# print(s.find("l", 4, 20))
+# print(s.find("l"))
+# print(s.rfind("l"))
+#
+# print(s.index("l"))
+# print(s.rindex("l"))
+
+
+# st = input("Введите два слова через пробел: ")
+# first = st[:st.find(" ")]
+# second = st[st.find(" ") + 1:]
+# print(second + first)
+
+
+# s = "hello, WORLD! I am learning Python."
+# print(s.startswith("I am", 14))
+# print(s.index("I am"))
+# print(s.endswith("on."))
+
+# print(int("789"))
+
+# print('123'.isdigit())  # проверка на наличие только числа
+# print('qqwee'.isalpha())  # проверяет строку на буквы
+#
+# print('abc123'.isalnum())  # проверка на числа и буквы
+#
+# print('abc'.islower())  # находятся ли в нижнем регистре
+# print('abc'.isupper())  # находятся ли в верхнем регистре
+#
+# n = input("Введите число: ")
+# if n.isdigit():
+#     n = int(n)
+#     print(n * 2)
+
+# print('py'.center(10))
+# print(' py '.center(10, "-"))
+
+# print('     py'.lstrip())  # удаляет по дефолту пробелы
+# print('     py     '.rstrip())
+# print('     py     '.strip())
+
+
+# print('https://www.pythons.org'.strip('/:pths.org'))
+# print('https://www.pythons.org'.lstrip('/:pths').rstrip('.org'))
+
+
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования."
+# print(str1.replace("Nython", "Python"))
+
+
+# s = "-"
+# seq = ("a", "b", "c")
+# print(s.join(seq))
+#
+# print("..".join(['1', '99']))
+#
+# print(", ".join("Hello"))
+
+
+# print("Строка разделенная пробелами".split())  # ['Строка', 'разделенная', 'пробелами']
+# print('www.python.org.ru'.split(".", 2))
+# print('www.python.org.ru'.rsplit(".", 2))
+
+
+# a = input("-> ").split()    # ['Hello', 'world']
+# b = list(map(int, a))
+# print(b)
