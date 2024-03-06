@@ -2768,7 +2768,6 @@ from random import randint
 
 import re
 
-
 # s = "Я ищу совпадение в 2024 году. И я их найду в 2 счёта."
 # reg = "а"
 
@@ -2980,14 +2979,155 @@ import re
 # print(func(5))
 
 
-def to_str(n, base):
-    convert = "0123456789ABCDEF"
-    if n < base:
-        return convert[n]
-    else:
-        return to_str(n // base, base) + convert[n % base]
+# def to_str(n, base):
+#     convert = "0123456789ABCDEF"
+#     if n < base:
+#         return convert[n]
+#     else:
+#         return to_str(n // base, base) + convert[n % base]
+#
+#
+# print(to_str(254, 10))   # to_str(254, 16) => FE
+
+#                                         РЕКУРСИЯ С ВЛОЖЕННЫМИ СПИСКАМИ
+# names = ["Adam", ["Bob", ["Chet", "Cat"], "Bard", "Bert"], "Alex", ["Bea", "Bill"], "Ann"]
+#
+#
+# def count_items(item_list):
+#     count = 0
+#     for item in item_list:
+#         if isinstance(item, list):
+#             count += count_items(item)
+#         else:
+#             count += 1
+#     return count
+#
+#
+# print(count_items(names))
 
 
-print(to_str(254, 10))   # to_str(254, 16) => FE
+# def remove(text):
+#     if not text:
+#         return ""
+#     if text[0] == "\n" or text[0] == " ":
+#         return remove(text[1:])
+#     else:
+#         return text[0] + remove(text[1:])
+#
+#
+# print(remove("  Hello\nWorld "))
 
 
+#                                                   ФАЙЛЫ
+
+# f = open("test.txt", "r")
+# # f = open(r"F:\КУРС ТОП АКАДЕМИЯ\python317\test.txt", "r")
+# print(f.read(3))
+# print(f.read())           # возвращает весь документ
+# # print(f)
+# # print(*f)
+# # print(f.mode)
+# # print(f.name)
+# # print(f.encoding)
+# f.close()
+# # print(f.closed)
+
+
+# f = open("test2.txt", "r")
+# print(f.readline())       # возвращает 1 строку
+# print(f.readline(8))
+# print(f.readline())
+# f.close()
+
+
+# f = open("test2.txt", "r")
+# print(f.readlines(26))
+# print(f.readlines())      # возвращает список строк
+# f.close()
+
+# print(len(f.readlines()))
+# f = open("test2.txt", "r")
+# count = 0
+# for line in f:
+#     print(line, end="")
+#     count += 1
+# f.close()
+# print(count)
+
+# f = open("xyz.txt", "w")
+# f.write("Hello\nWorld\n")
+# f.close()
+
+# f = open("xyz.txt", "a")
+# f.write("New text.\n")
+# f.close()
+
+# f = open("xyz.txt", "a")
+# lines = ['\nThis is line 1', '\nThis is line 2']
+# f.writelines(lines)
+# f.close()
+
+# f = open("xyz.txt", "w")
+# lst = [str(i) + " " for i in range(1, 20)]
+# print(lst)
+# for index in lst:
+#     f.write(index + "\t")
+# f.writelines(lst)
+# f.close()
+
+# f = open("test3.txt", "w")
+# f.write("Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл\n")
+# f.close()
+
+# f = open('test3.txt', 'r')
+# read_file = f.readlines()
+# print(read_file)
+# read_file[1] = "Hello world!\n"
+# print(read_file)
+# f.close()
+#
+# f = open("test3.txt", "w")
+# f.writelines(read_file)
+# f.close()
+
+# f = open("test3.txt", 'r')
+# read_file = f.readlines()
+# pos = int(input("Введите индекс строки для удаления: "))
+# if 0 < pos < len(read_file):
+#     del_pos = read_file.pop(pos)
+# else:
+#     print("Индекс введен неверно")
+# f.close()
+#
+# f = open("test3.txt", 'w')
+# f.writelines(read_file)
+# f.close()
+
+# f = open("test.txt", "r")
+# print(f.read(3))
+# print(f.tell())     # возвращает текущую позицию условного курсора в файле
+# print(f.seek(1))    # перемещает условный курсор в заданную позицию
+# print(f.read())
+# print(f.tell())
+# f.close()
+
+# f = open("test.txt", "r+")
+# print(f.write("I am learning Python"))
+# print(f.seek(3))
+# print(f.write("-new string-"))
+# print(f.tell())
+# f.close()
+
+# f = open("test2.txt", "a+")
+# # print(f.write("111111I am learning Python"))
+# print(f.read())
+# f.close()
+
+
+# with open("test2.txt", 'w+') as f:
+#     print(f.write('01234\n56789'))
+# print(f.closed)
+
+# with open("test2.txt", 'r') as f:
+#     for line in f:
+#         print(line[:3])
