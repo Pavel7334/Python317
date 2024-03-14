@@ -2,7 +2,7 @@ class Person:
     """Класс, представляющий человека с именем и возрастом."""
 
     def __init__(self, name: str, age: float) -> None:
-        self.name = name
+        self.__name = name
         self.__age = age
 
     @staticmethod
