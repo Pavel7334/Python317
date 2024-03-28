@@ -4172,8 +4172,8 @@ import os
 # for f in figs:
 #     f.draw()
 
-# Абстрактные методы
-# Абстрактный класс
+#                                                        # Абстрактные методы
+#                                                        # Абстрактный класс
 
 # from abc import ABC, abstractmethod
 #
@@ -4291,7 +4291,7 @@ import os
 #     elem.show()
 
 
-# Интерфейсы
+#                                                       Интерфейсы
 
 # from abc import ABC, abstractmethod
 #
@@ -4320,7 +4320,7 @@ import os
 # ch.display1()
 # ch.display2()
 
-# Вложенные классы
+#                                                   Вложенные классы
 
 # class MyOuter:
 #     age = 18
@@ -4382,26 +4382,305 @@ import os
 # g.display()
 # dg = outer.dg
 # dg.display()
-class Computer:
+# class Computer:
+#
+#     def __init__(self):
+#         self.name = "PC001"
+#         self.os = self.OS()
+#         self.cpu = self.CPU()
+#
+#     class OS:
+#         def system(self):
+#             return "Windows 10"
+#
+#     class CPU:
+#         def make(self):
+#             return "Intel"
+#
+#         def model(self):
+#             return "Core-i7"
+#
+#
+# comp = Computer()
+# my_os = comp.os
+# my_cpu = comp.cpu
+# print(comp.name, my_os.system(), my_cpu.make(), my_cpu.model())
 
-    def __init__(self):
-        self.name = "PC001"
-        self.os = self.OS()
-        self.cpu = self.CPU()
+# class Cat:
+#     def __init__(self, name):
+#         self.name = name
+#
+#     def __repr__(self):
+#         return f"{self.__class__}: {self.name}"
+#
+#     def __str__(self):
+#         return self.name
+#
+#
+# cat = [Cat("Мурзик"), Cat("Пушок")]
+# print(cat)
 
-    class OS:
-        def system(self):
-            return "Windows 10"
+# class Point:
+#
+#     def __init__(self, *args):
+#         self.coord = args  # tuple(1, 2)
+#         self.color = "red"
+#         self.width = 2
+#
+#     def __len__(self):
+#         return len(self.coord)
+#
+#
+# p = Point(1, 2, 3, 4)
+# print(len(p.coord))
 
-    class CPU:
-        def make(self):
-            return "Intel"
+# import math
+#
+#
+# class Point:
+#     __slots__ = ("x", "y", '__length')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#         self.length = math.sqrt(x * x + y * y)
+#
+#     @property
+#     def length(self):
+#         return self.__length
+#
+#     @length.setter
+#     def length(self, value):
+#         self.__length = value
+#
+#
+# p1 = Point(10, 20)
+# print(p1.x, p1.y)
+# # p1.z = 30
+# # print(p1.z)
+# print(p1.length)
 
-        def model(self):
-            return "Core-i7"
+# class Point:
+#     __slots__ = ("x", "y")
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point2:
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# pt1 = Point(1, 2)
+# pt2 = Point2(1, 2)
+#
+# print("pt1 =", pt1.__sizeof__())
+# print("pt2 =", pt2.__sizeof__() + pt2.__dict__.__sizeof__())
+
+# class Point:
+#     __slots__ = ("x", "y")
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point3D(Point):
+#     __slots__ = "z"
+#
+#     def __init__(self, x, y, z):
+#         super().__init__(x, y)
+#         self.z = z
+#
+#
+# p = Point(1, 2)
+# pt3 = Point3D(1, 2, 3)
+# print(pt3.z)
+
+# Множественное наследование
+
+# class Creature:
+#     def __init__(self, name):
+#         self.name = name
+#
+#
+# class Animal(Creature):
+#     def slips(self):
+#         print(self.name, "slips")
+#
+#
+# class Pet(Creature):
+#     def plays(self):
+#         print(self.name, "plays")
+#
+#
+# class Dog(Animal, Pet):
+#     def bark(self):
+#         print(self.name, "barks")
+#
+#
+# d = Dog("Бобик")
+# d.bark()
+# d.slips()
+# d.plays()
 
 
-comp = Computer()
-my_os = comp.os
-my_cpu = comp.cpu
-print(comp.name, my_os.system(), my_cpu.make(), my_cpu.model())
+# class A:
+#     def __init__(self):
+#         print("Class A")
+#
+#
+# class B(A):
+#     def __init__(self):
+#         print("Class B")
+#
+#
+# class C(A):
+#     def __init__(self):
+#         print("Class C")
+#
+#
+# class D(B, C):
+#     def __init__(self):
+#         print("Class D")
+#
+#
+# d = D()
+# print(D.mro())
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#
+# class Styles:
+#     def __init__(self, color="red", width=1):
+#         print("Инициализатор Styles")
+#         self._color = color
+#         self._width = width
+#
+#
+# class Pos:
+#     def __init__(self, sp: Point, ep: Point, color="red", width=1):
+#         print("Инициализатор Pos")
+#         self._sp = sp
+#         self._ep = ep
+#         # Styles.__init__(self, color, width)
+#         super().__init__(color, width)
+#
+#
+# class Line(Pos, Styles):
+#     def draw(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#
+# l1 = Line(Point(10, 10), Point(100, 100))
+# l1.draw()
+
+#                                                    #Миксины
+
+# class Goods:
+#     def __init__(self, name, weight, price):
+#         print("Инициализатор Goods")
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#         super().__init__()
+#
+#     def print_info(self):
+#         print(f"{self.name}, {self.weight}, {self.price}")
+#
+#
+# class MixinLog:
+#     ID = 0
+#
+#     def __init__(self):
+#         print("Инициализатор MixinLog")
+#         MixinLog.ID += 1
+#         self.id = MixinLog.ID
+#
+#     def save_sell_log(self):
+#         print(f"{self.id}: товар был продан в 00:00")
+#
+#
+# class NoteBook(Goods, MixinLog):
+#     pass
+#
+#
+# n = NoteBook("HP", 1.5, 35000)
+# n.print_info()
+# n.save_sell_log()
+
+
+#                                                    # Перегрузка методов
+
+# 24 * 60 * 60 = 86400 - число секунд  в одном дне
+
+
+class Clock:
+    __DAY = 86400
+
+    def __init__(self, seconds: int):
+        if not isinstance(seconds, int):
+            raise TypeError("Секунды должны быть целым числом")
+        self.seconds = seconds % self.__DAY
+
+    def get_format_time(self):
+        s = self.seconds % 60
+        m = (self.seconds // 60) % 60
+        h = (self.seconds // 3600) % 24
+        return f"{Clock.__get_formatted_num(h)}:{Clock.__get_formatted_num(m)}:{Clock.__get_formatted_num(s)}"
+
+    @staticmethod
+    def __get_formatted_num(num):
+        return str(num) if num > 9 else f"0{num}"
+
+    def __add__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.seconds + other.seconds)
+
+    def __eq__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        if self.seconds == other.seconds:
+            return True
+        return False
+
+    def __ne__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        if self.seconds != other.seconds:
+            return True
+        return False
+
+
+c1 = Clock(100)
+c2 = Clock(200)
+# c4 = Clock(300)
+print(c1.get_format_time())
+print(c2.get_format_time())
+# print(c4.get_format_time())
+# c3 = c1 + c2 + c4
+# print(c3.get_format_time())
+# c1 += c2
+# print(c1.get_format_time())
+
+if c1 == c2:
+    print("Время равно")
+else:
+    print("Время не равно")
+
+if c1 != c2:
+    print("Время не равно")
+else:
+    print("Время равно")
