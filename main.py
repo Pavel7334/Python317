@@ -4626,61 +4626,297 @@ import os
 # 24 * 60 * 60 = 86400 - число секунд  в одном дне
 
 
-class Clock:
-    __DAY = 86400
-
-    def __init__(self, seconds: int):
-        if not isinstance(seconds, int):
-            raise TypeError("Секунды должны быть целым числом")
-        self.seconds = seconds % self.__DAY
-
-    def get_format_time(self):
-        s = self.seconds % 60
-        m = (self.seconds // 60) % 60
-        h = (self.seconds // 3600) % 24
-        return f"{Clock.__get_formatted_num(h)}:{Clock.__get_formatted_num(m)}:{Clock.__get_formatted_num(s)}"
-
-    @staticmethod
-    def __get_formatted_num(num):
-        return str(num) if num > 9 else f"0{num}"
-
-    def __add__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        return Clock(self.seconds + other.seconds)
-
-    def __eq__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        if self.seconds == other.seconds:
-            return True
-        return False
-
-    def __ne__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом Clock")
-        if self.seconds != other.seconds:
-            return True
-        return False
-
-
-c1 = Clock(100)
-c2 = Clock(200)
-# c4 = Clock(300)
-print(c1.get_format_time())
-print(c2.get_format_time())
-# print(c4.get_format_time())
-# c3 = c1 + c2 + c4
-# print(c3.get_format_time())
-# c1 += c2
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, seconds: int):
+#         if not isinstance(seconds, int):
+#             raise TypeError("Секунды должны быть целым числом")
+#         self.seconds = seconds % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.seconds % 60
+#         m = (self.seconds // 60) % 60
+#         h = (self.seconds // 3600) % 24
+#         return f"{Clock.__get_formatted_num(h)}:{Clock.__get_formatted_num(m)}:{Clock.__get_formatted_num(s)}"
+#
+#     @staticmethod
+#     def __get_formatted_num(num):
+#         return str(num) if num > 9 else f"0{num}"
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         return Clock(self.seconds + other.seconds)
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         if self.seconds == other.seconds:
+#             return True
+#         return False
+#
+#     def __ne__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом Clock")
+#         if self.seconds != other.seconds:
+#             return True
+#         return False
+#
+#     def __getitem__(self, item):
+#         if not isinstance(item, str):
+#             raise TypeError("Ключ должен быть типом str")
+#         if item == "hour":
+#             return (self.seconds // 3600) % 24
+#         if item == "minute":
+#             return (self.seconds // 60) % 60
+#         if item == "second":
+#             return self.seconds % 60
+#         return "Неверный ключ"
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, str):
+#             raise TypeError("Ключ должен быть типом str")
+#         if not isinstance(value, int):
+#             raise TypeError("Значение должно быть целым числом")
+#
+#         s = self.seconds % 60
+#         m = (self.seconds // 60) % 60
+#         h = (self.seconds // 3600) % 24
+#
+#         if key == "hour":
+#             self.seconds = s + 60 * m + value * 3600
+#         if key == "minute":
+#             self.seconds = s + 60 * value + h * 3600
+#         if key == "second":
+#             self.seconds = value + 60 * m + h * 3600
+#
+#
+# c1 = Clock(80000)
 # print(c1.get_format_time())
+# c1["hour"] = 11
+# c1["minute"] = 24
+# c1["second"] = 59
+# print(c1["hour"], c1["minute"], c1["second"])
 
-if c1 == c2:
-    print("Время равно")
-else:
-    print("Время не равно")
+# c1 = Clock(100)
+# c2 = Clock(200)
+# # c4 = Clock(300)
+# print(c1.get_format_time())
+# print(c2.get_format_time())
+# # print(c4.get_format_time())
+# # c3 = c1 + c2 + c4
+# # print(c3.get_format_time())
+# # c1 += c2
+# # print(c1.get_format_time())
+#
+# if c1 == c2:
+#     print("Время равно")
+# else:
+#     print("Время не равно")
+#
+# if c1 != c2:
+#     print("Время не равно")
+# else:
+#     print("Время равно")
 
-if c1 != c2:
-    print("Время не равно")
-else:
-    print("Время равно")
+# class Student:
+#     def __init__(self, name, marks):
+#         self.name = name
+#         self.marks = marks
+#
+#     def __getitem__(self, item):
+#         if 0 <= item < len(self.marks):
+#             return self.marks[item]
+#         else:
+#             raise IndexError("Неверный индекс")
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, int) or key < 0:
+#             raise TypeError("Ключ должен быть целым положительным числом")
+#
+#         if key >= len(self.marks):
+#             off = key + 1 - len(self.marks)
+#             self.marks.extend([None] * off)
+#         self.marks[key] = value
+#
+#     def __delitem__(self, key):
+#         if not isinstance(key, int):
+#             raise TypeError("Ключ должен быть целым числом")
+#         del self.marks[key]
+#
+#
+# s1 = Student("Сергей", [5, 5, 3, 4, 5])
+# print(s1.marks[2])
+# print(s1[2])
+# s1[10] = 4
+# del s1[2]
+# print(s1.marks)
+
+# from random import choice, randint
+#
+#
+# class Cat:
+#     def __init__(self, name, age, pol):
+#         self.name = name
+#         self.age = age
+#         self.pol = pol
+#
+#     def __str__(self):
+#         if self.pol == "M":
+#             return f"{self.name} is good boy!!!"
+#         elif self.pol == "F":
+#             return f"{self.name} is good girl!!!"
+#         else:
+#             return f"{self.name} Хороший котёнок!!!"
+#
+#     def __repr__(self):
+#         return f"Cat(name = '{self.name}', age = {self.age}, pol = {self.pol})"
+#
+#     def __add__(self, other):
+#         if self.pol != other.pol:
+#             return [Cat("No name", 0, choice(["M", "F"])) for _ in range(randint(1, 5))]
+#         else:
+#             raise TypeError("Types are not supported")
+#
+#
+# cat1 = Cat("Tom", 4, "M")
+# cat2 = Cat("Elsa", 5, "F")
+# cat3 = Cat("Murzik", 3, "M")
+# print(cat1)
+# print(cat2)
+# print(cat1 + cat3)
+
+
+#                                               Полиморфизм
+
+# class Rectangle:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#
+#     def get_perimeter(self):
+#         return 2 * (self.width + self.height)
+#
+#
+# class Square:
+#     def __init__(self, length):
+#         self.length = length
+#
+#     def get_perimeter(self):
+#         return 4 * self.length
+#
+#
+# class Triangle:
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def get_perimeter(self):
+#         return self.a + self.b + self.c
+#
+#
+# r1 = Rectangle(1, 2)
+# r2 = Rectangle(3, 4)
+#
+# s1 = Square(10)
+# s2 = Square(20)
+#
+# t1 = Triangle(1, 2, 3)
+# t2 = Triangle(4, 5, 6)
+#
+# shape = [r1, r2, s1, s2, t1, t2]
+#
+# for i in shape:
+#     print(i.get_perimeter())
+
+# class Cat:
+#     def __init__(self, name, age):
+#         self.age = age
+#         self.name = name
+#
+#     def info(self):
+#         return f"Я кот. Меня зовут {self.name}. Мой возраст {self.age}"
+#
+#     def make_sound(self):
+#         return f"{self.name} мяукает"
+#
+#
+# class Dog:
+#     def __init__(self, name, age):
+#         self.age = age
+#         self.name = name
+#
+#     def info(self):
+#         return f"Я Собака. Меня зовут {self.name}. Мой возраст {self.age}"
+#
+#     def make_sound(self):
+#         return f"{self.name} гавкает"
+#
+#
+# cat1 = Cat("Пушок", 2.5)
+# dog1 = Dog("Мухтар", 4)
+#
+# for animal in (cat1, dog1):
+#     print(animal.info())
+#     print(animal.make_sound())
+
+
+class Human:
+
+    def __init__(self, last_name, first_name, age):
+        self.last_name = last_name
+        self.first_name = first_name
+        self.age = age
+
+    def info(self):
+        print(f"\n{self.last_name} {self.first_name} {self.age}", end=" ")
+
+
+class Student(Human):
+
+    def __init__(self, last_name, first_name, age, speciality, group, rating):
+        super().__init__(last_name, first_name, age)
+        self.speciality = speciality
+        self.group = group
+        self.rating = rating
+
+    def info(self):
+        super().info()
+        print(f"{self.speciality} {self.group} {self.rating}", end=" ")
+
+
+class Teacher(Human):
+
+    def __init__(self, last_name, first_name, age, speciality, experience):
+        super().__init__(last_name, first_name, age)
+        self.speciality = speciality
+        self.experience = experience
+
+    def info(self):
+        super().info()
+        print(f"{self.speciality} {self.experience}", end=" ")
+
+
+class Graduate(Student):
+
+    def __init__(self, last_name, first_name, age, speciality, group, rating, topic):
+        super().__init__(last_name, first_name, age, speciality, group, rating)
+        self.topic = topic
+
+    def info(self):
+        super().info()
+        print(f"{self.topic}", end=" ")
+
+
+group = [
+    Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
+    Student("Загидуллин", "Линар", 32, "РПО", "PD_011", 5),
+    Graduate("Шугани", "Сергей", 15, "РПО", "PD_011", 5, "Защита персональных данных"),
+    Teacher("Даньшин", "Андрей", 38, "Астрофизика", 110),
+    Student("Маркин", "Даниил", 17, "ГК", "Python_011", 5),
+    Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
+]
+for i in group:
+    i.info()
