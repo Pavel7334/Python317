@@ -4863,60 +4863,392 @@ import os
 #     print(animal.make_sound())
 
 
-class Human:
+# class Human:
+#
+#     def __init__(self, last_name, first_name, age):
+#         self.last_name = last_name
+#         self.first_name = first_name
+#         self.age = age
+#
+#     def info(self):
+#         print(f"\n{self.last_name} {self.first_name} {self.age}", end=" ")
+#
+#
+# class Student(Human):
+#
+#     def __init__(self, last_name, first_name, age, speciality, group, rating):
+#         super().__init__(last_name, first_name, age)
+#         self.speciality = speciality
+#         self.group = group
+#         self.rating = rating
+#
+#     def info(self):
+#         super().info()
+#         print(f"{self.speciality} {self.group} {self.rating}", end=" ")
+#
+#
+# class Teacher(Human):
+#
+#     def __init__(self, last_name, first_name, age, speciality, experience):
+#         super().__init__(last_name, first_name, age)
+#         self.speciality = speciality
+#         self.experience = experience
+#
+#     def info(self):
+#         super().info()
+#         print(f"{self.speciality} {self.experience}", end=" ")
+#
+#
+# class Graduate(Student):
+#
+#     def __init__(self, last_name, first_name, age, speciality, group, rating, topic):
+#         super().__init__(last_name, first_name, age, speciality, group, rating)
+#         self.topic = topic
+#
+#     def info(self):
+#         super().info()
+#         print(f"{self.topic}", end=" ")
+#
+#
+# group = [
+#     Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
+#     Student("Загидуллин", "Линар", 32, "РПО", "PD_011", 5),
+#     Graduate("Шугани", "Сергей", 15, "РПО", "PD_011", 5, "Защита персональных данных"),
+#     Teacher("Даньшин", "Андрей", 38, "Астрофизика", 110),
+#     Student("Маркин", "Даниил", 17, "ГК", "Python_011", 5),
+#     Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
+# ]
+# for i in group:
+#     i.info()
 
-    def __init__(self, last_name, first_name, age):
-        self.last_name = last_name
-        self.first_name = first_name
-        self.age = age
+#                                                   Функторы
 
-    def info(self):
-        print(f"\n{self.last_name} {self.first_name} {self.age}", end=" ")
+# class Counter:
+#
+#     def __init__(self):
+#         self.__count = 0
+#
+#     def __call__(self):
+#         self.__count += 1
+#         print(self.__count)
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
+# c1()
+# c1()
+
+# def string_strip(chars):
+#     def wrapper(string):
+#         if not isinstance(string, str):
+#             raise TypeError("Аргумент должен быть строкой")
+#         return string.strip(chars)
+#
+#     return wrapper
+#
+#
+# s1 = string_strip("!@#$%^&*()_+=- ")
+# print(s1(" Hello World! "))
+#
+#
+# class StripChars:
+#     def __init__(self, chars):
+#         self.__chars = chars
+#
+#     # def __call__(self, string):
+#     #     if not isinstance(string, str):
+#     #         raise TypeError("Аргумент должен быть строкой")
+#     #     return string.strip(self.__chars)
+#
+#     def __call__(self, *args):
+#         if not isinstance(args[0], str):
+#             raise TypeError("Аргумент должен быть строкой")
+#         return args[0].strip(self.__chars)
+#
+#
+# s2 = StripChars("!@#$%^&*()_+=- ")
+# print(s2(" Hello World! "))
+
+#                                                   Класс как декоратор
+
+# class MyDecorator:
+#
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self):
+#         print("До вызова функции")
+#         self.func()
+#         print("После вызова функции")
+#
+#
+# @MyDecorator
+# def func_test():
+#     print("Hello, I am func 'func_test'")
+#
+#
+# func_test()
 
 
-class Student(Human):
+# class MyDecorator:
+#
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, x, y):
+#         # print("До вызова функции")
+#         # self.func(x, y)
+#         # print("После вызова функции")
+#         return f"Перед вызовом функции\n{self.func(x, y)}\nПосле вызова функции"
+#
+#
+# @MyDecorator
+# def func_test(a, b):
+#     return a * b
+#
+#
+# print(func_test(5, 6))
 
-    def __init__(self, last_name, first_name, age, speciality, group, rating):
-        super().__init__(last_name, first_name, age)
-        self.speciality = speciality
-        self.group = group
-        self.rating = rating
+# class Power:
+#
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, *args):
+#         return f"Результат: {self.func(*args) ** 2}"
+#
+#
+# @Power
+# def func_test(a, b):
+#     return a * b
+#
+#
+# print(func_test(2, 3))
 
-    def info(self):
-        super().info()
-        print(f"{self.speciality} {self.group} {self.rating}", end=" ")
+# class MyDecorator:
+#
+#     def __init__(self, func):
+#         self.func = func
+#
+#     def __call__(self, *args, **kwargs):
+#         return f"Перед вызовом функции\n{self.func(*args, **kwargs)}\nПосле вызова функции"
+#
+#
+# @MyDecorator
+# def func_test(a, b):
+#     return a * b
+#
+#
+# @MyDecorator
+# def func_test1(a, b, c):
+#     return a * b * c
+#
+#
+# print(func_test(5, 6))
+# print(func_test1(2, c=5, b=2))
 
 
-class Teacher(Human):
+# class MyDecorator:
+#
+#     def __init__(self, arg):
+#         self.arg = arg
+#
+#     def __call__(self, fn):
+#         def wrapper(*args, **kwargs):
+#             return f"Перед вызовом функции\n{self.arg} {args[0]} * {args[1]} = {fn(*args, **kwargs)}\nПосле вызова функции"
+#
+#         return wrapper
+#
+#
+# @MyDecorator("Произведение:")
+# def func_test(a, b):
+#     return a * b
+#
+#
+# print(func_test(5, 6))
 
-    def __init__(self, last_name, first_name, age, speciality, experience):
-        super().__init__(last_name, first_name, age)
-        self.speciality = speciality
-        self.experience = experience
+# class Power:
+#
+#     def __init__(self, power):
+#         self.power = power
+#
+#     def __call__(self, func):
+#         def wrapper(*args, **kwargs):
+#             return f"Результат: {func(*args, **kwargs) ** self.power}"
+#         return wrapper
+#
+#
+# @Power(3)
+# def func_test(a, b):
+#     return a * b
+#
+#
+# print(func_test(2, 2))
+# print(func_test(b=2, a=2))
 
-    def info(self):
-        super().info()
-        print(f"{self.speciality} {self.experience}", end=" ")
+
+# def dec(fn):
+#     def wrapper(*args, **kwargs):
+#         print("*" * 20)
+#         fn(*args, **kwargs)
+#         print("*" * 20)
+#
+#     return wrapper
+#
+#
+# class Person:
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#     @dec
+#     def info(self):
+#         print(self.name, self.surname)
+#
+#
+# p = Person("Вася", "Петров")
+# p.info()
+
+# def decorator(cls):
+#     class Wrapper(cls):
+#         def doubler(self, value):
+#             return value * 2
+#
+#     return Wrapper
+#
+#
+# @decorator
+# class ActualClass:
+#
+#     def __init__(self):
+#         print("Инициализация ActualClass")
+#
+#     def quad(self, value):
+#         return value * 4
+#
+#
+# obj = ActualClass()
+# print(obj.quad(5))
+# print(obj.doubler(5))
+
+#                                                 Дескриптор
+
+# class String:
+#     def __init__(self, value=None):
+#         if value:
+#             self.set(value)
+#
+#     def get(self):
+#         return self.__value
+#
+#     def set(self, value):
+#         if not isinstance(value, str):
+#             raise ValueError("Ожидается строка")
+#         self.__value = value
+#
+#
+# class Person:
+#
+#     def __init__(self, name, surname):
+#         self.name = String(name)
+#         self.surname = String(surname)
+#
+#     # @property
+#     # def name(self):
+#     #     return self.__name
+#     #
+#     # @property
+#     # def surname(self):
+#     #     return self.__surname
+#     #
+#     # @name.setter
+#     # def name(self, value):
+#     #     if not isinstance(value, str):
+#     #         raise ValueError("Имя должно быть строкой")
+#     #     self.__name = value
+#     #
+#     # @surname.setter
+#     # def surname(self, value):
+#     #     if not isinstance(value, str):
+#     #         raise ValueError("Имя должно быть строкой")
+#     #     self.__surname = value
+#     #
+#     # @name.deleter
+#     # def name(self):
+#     #     del self.__name
+#     #
+#     # @surname.deleter
+#     # def surname(self):
+#     #     del self.__surname
+#
+#
+# p = Person("Вася", "Петров")
+# p.name.set("Игорь")
 
 
-class Graduate(Student):
+# class ValidString:
+#
+#     def __set_name__(self, owner, name):
+#         self.__name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.__name]
+#
+#     def __set__(self, instance, value):
+#         if not isinstance(value, str):
+#             raise ValueError("Ожидается строка")
+#         instance.__dict__[self.__name] = value
+#
+#
+# class Person:
+#
+#     name = ValidString()
+#     surname = ValidString()
+#
+#     def __init__(self, name, surname):
+#         self.name = name
+#         self.surname = surname
+#
+#
+# p = Person("Вася", "Петров")
+#
+# print(p.name)
+# print(p.surname)
 
-    def __init__(self, last_name, first_name, age, speciality, group, rating, topic):
-        super().__init__(last_name, first_name, age, speciality, group, rating)
-        self.topic = topic
 
-    def info(self):
-        super().info()
-        print(f"{self.topic}", end=" ")
-
-
-group = [
-    Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
-    Student("Загидуллин", "Линар", 32, "РПО", "PD_011", 5),
-    Graduate("Шугани", "Сергей", 15, "РПО", "PD_011", 5, "Защита персональных данных"),
-    Teacher("Даньшин", "Андрей", 38, "Астрофизика", 110),
-    Student("Маркин", "Даниил", 17, "ГК", "Python_011", 5),
-    Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
-]
-for i in group:
-    i.info()
+# class NonNegative:
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         if value < 0:
+#             raise ValueError("Значение должно быть в диапазоне от 0 до 100")
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+#
+#
+# class Order:
+#     prise = NonNegative()
+#     quantity = NonNegative()
+#
+#     def __init__(self, name, price, quantity):
+#         self.name = name
+#         self.price = price
+#         self.quantity = quantity
+#
+#     def total(self):
+#         return self.price * self.quantity
+#
+#
+# apple_order = Order("apple", 5, 10)
+# apple_order.quantity = 15
+# print(apple_order.price)
+# print(apple_order.total())
+# print(apple_order.__dict__)
