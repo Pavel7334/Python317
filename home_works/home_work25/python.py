@@ -1,4 +1,4 @@
-import math
+import geometry
 
 
 class Pair:
@@ -26,11 +26,11 @@ class RightTriangle(Pair):
 
     def hypotenuse(self) -> float:
         """Метод для вычисления длины первой гипотенузы прямоугольного треугольника."""
-        return math.sqrt(self.A ** 2 + self.B ** 2)
+        return geometry.sqrt(self.A ** 2 + self.B ** 2)
 
     def second_hypotenuse(self) -> float:
         """Метод для вычисления длины второй гипотенузы прямоугольного треугольника."""
-        return math.sqrt(self.A ** 2 + self.B ** 2 + (2 * self.A * self.B))
+        return geometry.sqrt(self.A ** 2 + self.B ** 2 + (2 * self.A * self.B))
 
     def area(self) -> float:
         """Метод для вычисления площади прямоугольного треугольника."""

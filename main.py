@@ -1,4 +1,4 @@
-import math
+import geometry
 from datetime import datetime
 
 # first_name = "admin"
@@ -954,19 +954,19 @@ import random
 #     print()
 # print("Количество отрицательных элементов:", count)
 
-# import math as m
+# import geometry as m
 #
-# # print(math.sqrt(4))
-# # print(math.pi)
+# # print(geometry.sqrt(4))
+# # print(geometry.pi)
 # print(m.ceil(3.2))
 # print(m.floor(3.8))
 
-# from math import pi
+# from geometry import pi
 #
 # radius = (int(input("Введите радиус окружности: ")))
 # print("Длина окружности:", round(2 * pi * radius, 2))
 
-# from math import sqrt
+# from geometry import sqrt
 #
 # a = int(input("Введите первый катет: "))
 # b = int(input("Введите второй катет: "))
@@ -2612,7 +2612,7 @@ from random import randint
 # print(square.__doc__)
 
 
-# from math import pi
+# from geometry import pi
 #
 #
 # def cylinder(r, h):
@@ -3193,7 +3193,6 @@ import re
 
 import os
 
-
 # import os.path
 
 # print(os.path.split(r"F:\КУРС ТОП АКАДЕМИЯ\python317\nested1\nested2\nested3\nested4\two.txt"))
@@ -3550,7 +3549,7 @@ import os
 #         return 2 * (self.__length + self.__width)
 #
 #     def get_hypotenuse(self):
-#         return round(math.sqrt(self.__length ** 2 + self.__width ** 2), 2)
+#         return round(geometry.sqrt(self.__length ** 2 + self.__width ** 2), 2)
 #
 #     def get_draw(self):
 #         print(("*" * self.__width + "\n") * self.__length)
@@ -4199,7 +4198,7 @@ import os
 # q.draw()
 # q.move()
 
-# from math import pi
+# from geometry import pi
 #
 #
 # class Table:
@@ -4434,7 +4433,7 @@ import os
 # p = Point(1, 2, 3, 4)
 # print(len(p.coord))
 
-# import math
+# import geometry
 #
 #
 # class Point:
@@ -4443,7 +4442,7 @@ import os
 #     def __init__(self, x, y):
 #         self.x = x
 #         self.y = y
-#         self.length = math.sqrt(x * x + y * y)
+#         self.length = geometry.sqrt(x * x + y * y)
 #
 #     @property
 #     def length(self):
@@ -5252,3 +5251,159 @@ import os
 # print(apple_order.price)
 # print(apple_order.total())
 # print(apple_order.__dict__)
+
+
+#                                                 Метаклассы
+
+# a = 5
+# print(type(a))
+# print(type(int))
+
+# MyList = type(
+#     "MyList",
+#     (list,),
+#     dict(get_length=lambda self: len(self)
+#          ))
+#
+# lst = MyList()
+# lst.append(5)
+# lst.append(7)
+# print(lst, lst.get_length())
+
+#                                           Создание модулей
+
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+
+# from geometry import rect, sq, trian
+#
+#
+# def run():
+#     r1 = rect.Rectangle(1, 2)
+#     r2 = rect.Rectangle(3, 4)
+#
+#     s1 = sq.Square(10)
+#     s2 = sq.Square(20)
+#
+#     t1 = trian.Triangle(1, 2, 3)
+#     t2 = trian.Triangle(4, 5, 6)
+#
+#     shape = [r1, r2, s1, s2, t1, t2]
+#
+#     for g in shape:
+#         print(g.get_perimetr())
+#
+#
+# if __name__ == '__main__':
+#     run()
+
+
+# from car.electrocar import ElectroCar
+#
+# if __name__ == '__main__':
+#     e_car = ElectroCar("Tesla", "T", 2020, 1000)
+#     e_car.show_car()
+#     e_car.description_battery()
+
+# class Employee:
+#     def __init__(self, kod, name):
+#         self.id = kod
+#         self.name = name
+#
+#
+# class SalaryEmployee(Employee):
+#     """Административные работники, имеют фиксированную зарплату"""
+#
+#     def __init__(self, kod, name, weekly_salary):
+#         super().__init__(kod, name)
+#         self.weekly_salary = weekly_salary
+#
+#     def calculate_payroll(self):
+#         return self.weekly_salary
+#
+#
+# class HourlyEmployee(Employee):
+#     """Сотрудники с почасовой оплатой"""
+#
+#     def __init__(self, kod, name, hours_worked, house_rate):
+#         super().__init__(kod, name)
+#         self.hours_worked = hours_worked
+#         self.house_rate = house_rate
+#
+#     def calculate_payroll(self):
+#         return self.hours_worked * self.house_rate
+#
+#
+# class CommissionEmployee(SalaryEmployee):
+#     """Торговые представители, фиксированная зарплата + комиссия"""
+#
+#     def __init__(self, kod, name, weekly_salary, commission):
+#         super().__init__(kod, name, weekly_salary)
+#         self.commission = commission
+#
+#     def calculate_payroll(self):
+#         fixed = super().calculate_payroll()
+#         return fixed + self.commission
+#
+#
+# class PayrollSystem:
+#     def calculate(self, employees):
+#         print("Расчет заработной платы")
+#         print("=" * 50)
+#         for employee in employees:
+#             print(f"Заработная плата: {employee.id} - {employee.name}")
+#             print(f"- Проверить сумму: {employee.calculate_payroll()}")
+#             print()
+#
+#
+# salary_employee = SalaryEmployee(1, "Валерий Задорожный", 1500)
+# hourly_employee = HourlyEmployee(2, "Илья Кромин", 40, 15)
+# commission_employee = CommissionEmployee(3, "Николай Хорольский", 1000, 250)
+# payroll_system = PayrollSystem()
+# payroll_system.calculate([
+#     salary_employee,
+#     hourly_employee,
+#     commission_employee
+# ])
+
+
+#                                               Упаковка данных
+#                                               Сериализация
+#                                               Десериализация
+
+import pickle
+
+
+# file_name = "basket.txt"
+#
+# shop_list = {
+#     "фрукты": ("яблоки", "манго"),
+#     "овощи": ["морковь"],
+#     "бюджет": 1000
+# }
+#
+# with open(file_name, "wb") as f:
+#     pickle.dump(shop_list, f)
+#
+# with open(file_name, "rb") as f:
+#     new_shop_list = pickle.load(f)
+#
+# print(new_shop_list)
+
+class Text:
+    num = 35
+    string = 'Привет'
+    lst = [1, 2, 3]
+    tpl = (22, 23)
+
+    def __str__(self):
+        return f'Число: {self.num}\nСтрока: {self.string}\nСписок: {self.lst}\nКортеж: {self.tpl}'
+
+
+obj = Text()
+my_obg = pickle.dumps(obj)
+print(my_obg)
+
+obj2 = pickle.loads(my_obg)
+print(obj2)

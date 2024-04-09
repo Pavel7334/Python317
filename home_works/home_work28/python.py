@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-import math
+import geometry
 
 
 class Shape(ABC):
@@ -111,7 +111,7 @@ class Triangle(Shape):
 
     def area(self) -> float:
         s = self.perimeter() / 2
-        return round(math.sqrt(s * (s - self.side1) * (s - self.side2) * (s - self.side3)), 2)
+        return round(geometry.sqrt(s * (s - self.side1) * (s - self.side2) * (s - self.side3)), 2)
 
     def draw(self) -> None:
         height = max(self.side1, self.side2, self.side3)

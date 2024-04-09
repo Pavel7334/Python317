@@ -1,4 +1,4 @@
-from math import sqrt, pi
+from geometry import sqrt, pi
 
 
 def rectangle(a: float, b: float) -> str:

@@ -1,4 +1,4 @@
-from math import sqrt, pi
+from geometry import sqrt, pi
 
 print("1 - прямоугольник,\n2 - треугольник,\n3 - круг")
 figure = input("Выберите фигуру: ")

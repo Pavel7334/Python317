@@ -20,14 +20,14 @@ class Point3D:
     Класс для представления точки в трехмерном пространстве.
     """
 
-    _x: int = IntegerCoordinate('_x')
-    _y: int = IntegerCoordinate('_y')
-    _z: int = IntegerCoordinate('_z')
-
     def __init__(self, x: int, y: int, z: int) -> None:
         """
         Инициализация точки в трехмерном пространстве.
         """
+        self._x: int = IntegerCoordinate('_x')
+        self._y: int = IntegerCoordinate('_y')
+        self._z: int = IntegerCoordinate('_z')
+
         self._x = x
         self._y = y
         self._z = z
