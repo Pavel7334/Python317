@@ -1,43 +1,108 @@
-class IntegerCoordinate:
-    """
-    Дескриптор для проверки целочисленных значений координат.
-    """
+import json
+import os  # Импортируем модуль os для проверки существования файла
 
-    def __init__(self, name: str) -> None:
+
+class Student:
+    def __init__(self, name, marks):
         self.name = name
+        self.marks = marks
 
-    def __get__(self, instance: 'Point3D', owner: type) -> int:
-        return instance.__dict__[self.name]
+    def __str__(self):
+        marks_str = ", ".join(map(str, self.marks))
+        return f"Студент: {self.name} => {marks_str}"
 
-    def __set__(self, instance: 'Point3D', value: int) -> None:
-        if not isinstance(value, int):
-            raise ValueError("Значение координаты должно быть целым числом")
-        instance.__dict__[self.name] = value
+    def add_mark(self, mark):
+        self.marks.append(mark)
+
+    def del_mark(self, index):
+        self.marks.pop(index)
+
+    def edit_mark(self, index, mark):
+        self.marks[index] = mark
+
+    def average_mark(self):
+        return round(sum(self.marks) / len(self.marks), 2)
+
+    def get_file_name(self):
+        return self.name.lower() + ".json"
+
+    def dump_to_json(self):
+        data = {"name": self.name, "marks": self.marks}
+        with open(self.get_file_name(), "w") as f:
+            json.dump(data, f, indent=2)
+
+    def load_from_file(self):
+        file_name = self.get_file_name()
+        if os.path.exists(file_name):  # Проверяем существование файла
+            with open(file_name, "r") as f:
+                return json.load(f)
+        else:
+            return None
 
 
-class Point3D:
-    """
-    Класс для представления точки в трехмерном пространстве.
-    """
+class Group:
+    def __init__(self, students, group):
+        self.students = students
+        self.group = group
 
-    def __init__(self, x: int, y: int, z: int) -> None:
-        """
-        Инициализация точки в трехмерном пространстве.
-        """
-        self._x: int = IntegerCoordinate('_x')
-        self._y: int = IntegerCoordinate('_y')
-        self._z: int = IntegerCoordinate('_z')
+    def __str__(self):
+        student_info = '\n'.join(map(str, self.students))
+        return f"Группа: {self.group}\n{student_info}"
 
-        self._x = x
-        self._y = y
-        self._z = z
+    def add_student(self, student):
+        self.students.append(student)
 
-    def __repr__(self) -> str:
-        """
-        Возвращает строковое представление точки.
-        """
-        return f"{{'_x': {self._x}, '_y': {self._y}, '_z': {self._z}}}"
+    def remove_student(self, index):
+        return self.students.pop(index)
+
+    @staticmethod
+    def change_group(gr1, gr2, index):
+        gr2.add_student(gr1.remove_student(index))
+
+    def get_file_name(self):
+        return self.group.lower().replace(" ", "-") + ".json"
+
+    def dump_to_json(self):
+        file_name = 'гк-web.json'
+        if os.path.exists(file_name):
+            with open(file_name, 'r') as f:
+                data = json.load(f)
+                data[self.group] = [{'name': student.name, 'marks': student.marks} for student in self.students]
+            with open(file_name, 'w') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+        else:
+            group_data = {self.group: [{'name': student.name, 'marks': student.marks} for student in self.students]}
+            with open(file_name, 'w') as f:
+                json.dump(group_data, f, indent=2, ensure_ascii=False)
+
+    def load_from_file(self):
+        file_name = self.get_file_name()
+        if os.path.exists(file_name):  # Проверяем существование файла
+            with open(file_name, "r") as f:
+                return json.load(f)
+        else:
+            return None
 
 
-point = Point3D(1, 2, 3)
-print(point)
+st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
+st3 = Student('Birukov', [3, 5, 3, 2, 5, 4])
+
+sts1 = Group([st1, st2], "ГК Web")
+sts1.add_student(st3)
+sts1.remove_student(1)
+print(sts1)
+print()
+sts2 = Group([st2], "ГК Python")
+Group.change_group(sts1, sts2, 0)
+print(sts1)
+print()
+print(sts2)
+print()
+sts2.dump_to_json()
+sts2.load_from_file()
+
+# Создаем новую группу "ГК JavaScript" только с одним студентом "Birukov"
+sts3 = Group([st3], "ГК JavaScript")
+sts3.dump_to_json()
+sts3.load_from_file()

@@ -5374,7 +5374,6 @@ import os
 
 import pickle
 
-
 # file_name = "basket.txt"
 #
 # shop_list = {
@@ -5391,19 +5390,219 @@ import pickle
 #
 # print(new_shop_list)
 
-class Text:
-    num = 35
-    string = 'Привет'
-    lst = [1, 2, 3]
-    tpl = (22, 23)
+# class Text:
+#     num = 35
+#     string = 'Привет'
+#     lst = [1, 2, 3]
+#     tpl = (22, 23)
+#
+#     def __str__(self):
+#         return f'Число: {self.num}\nСтрока: {self.string}\nСписок: {self.lst}\nКортеж: {self.tpl}'
+#
+#
+# obj = Text()
+# my_obg = pickle.dumps(obj)
+# print(my_obg)
+#
+# obj2 = pickle.loads(my_obg)
+# print(obj2)
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a}, {self.b}, {self.c(2)}"
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr["c"]
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+# item1 = Test2()
+# print(item1)
+# item2 = pickle.dumps(item1)
+# item3 = pickle.loads(item2)
+# print(item3)
+
+import json
+
+
+# data = {
+#     "name": "Джон",
+#     "age": 30,
+#     20: None,
+#     True: 1,
+#     "hobbies": ("running", "sky diving", "singing"),
+#     "children": ["Alica", "Bob"]
+# }
+
+# with open("data_file.json", "w") as f:
+#     json.dump(data, f, indent=4)
+#
+# with open("data_file.json", "r") as f:
+#     new_data = json.load(f)
+#
+# print(new_data)
+
+# json_string = json.dumps(data, ensure_ascii=False)
+# print(json_string)
+# print(type(json_string))
+#
+# data2 = json.loads(json_string)
+# print(data2)
+# print(type(data2))
+
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#
+#     return person
+#
+#
+# def write_json(person_dict):
+#     try:
+#         data = json.load(open('persons.json'))
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)
+#     with open("persons.json", "w") as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# for i in range(5):
+#     write_json(gen_person())
+
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
 
     def __str__(self):
-        return f'Число: {self.num}\nСтрока: {self.string}\nСписок: {self.lst}\nКортеж: {self.tpl}'
+        # a = ''
+        # for i in self.marks:
+        #     a += str(i) + ', '
+        # return f"Студент: {self.name} => {a[:-2]}"
+        a = ", ".join(map(str, self.marks))
+        return f"Студент: {self.name} => {a}"
+        # return f"Студент: {self.name} => {self.marks}"
+
+    def add_mark(self, mark):
+        self.marks.append(mark)
+
+    def del_mark(self, index):
+        self.marks.pop(index)
+
+    def edit_mark(self, index, mark):
+        self.marks[index] = mark
+
+    def average_mark(self):
+        return round(sum(self.marks) / len(self.marks), 2)
+
+    def get_file_name(self):
+        return self.name.lower() + ".json"
+
+    def dump_to_json(self):
+        data = {"name": self.name, "marks": self.marks}
+        with open(self.get_file_name(), "w") as f:
+            json.dump(data, f, indent=2)
+
+    def load_from_file(self):
+        with open(self.get_file_name(), "r") as f:
+            print(json.load(f))
 
 
-obj = Text()
-my_obg = pickle.dumps(obj)
-print(my_obg)
+class Group:
+    def __init__(self, students, group):
+        self.students = students
+        self.group = group
 
-obj2 = pickle.loads(my_obg)
-print(obj2)
+    def __str__(self):
+        a = '\n'.join(map(str, self.students))
+        return f"Группа: {self.group}\n{a}"
+
+    def add_student(self, student):
+        self.students.append(student)
+
+    def remove_student(self, index):
+        return self.students.pop(index)
+
+    @staticmethod
+    def change_group(gr1, gr2, index):
+        gr2.add_student(gr1.remove_student(index))
+
+    def get_file_name(self):
+        return self.group.lower().replace(" ", "-") + ".json"
+
+    def dump_to_json(self):
+        data = [
+            {'name': student.name, "marks": student.marks} for student in self.students
+        ]
+        with open(self.get_file_name(), 'w') as f:
+            json.dump(data, f, indent=2)
+
+    def load_from_file(self):
+        with open(self.get_file_name(), "r") as f:
+            print(json.load(f))
+
+# st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+# print(st1)
+# st1.add_mark(4)
+# print(st1)
+# st1.del_mark(2)
+# print(st1)
+# st1.edit_mark(2, 5)
+# print(st1)
+# print(st1.average_mark())
+# st1.dump_to_json()
+# st1.load_from_file()
+# st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
+# st2.dump_to_json()
+# st2.load_from_file()
+st1 = Student('Bodnya', [5, 4, 3, 4, 5, 3])
+st2 = Student('Nikolaenko', [2, 3, 5, 4, 2])
+st3 = Student('Birukov', [3, 5, 3, 2, 5, 4])
+
+sts1 = Group([st1, st2], "ГК Python")
+# print(sts1)
+# print()
+sts1.add_student(st3)
+# print(sts1)
+# print()
+sts1.remove_student(1)
+print(sts1)
+print()
+sts2 = Group([st2], "ГК Web")
+# print(sts2)
+print()
+Group.change_group(sts1, sts2, 0)
+print(sts1)
+print()
+print(sts2)
+print()
+sts2.dump_to_json()
+sts2.load_from_file()
