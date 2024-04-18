@@ -5433,7 +5433,6 @@ import pickle
 
 import json
 
-
 # data = {
 #     "name": "Джон",
 #     "age": 30,
@@ -5723,34 +5722,179 @@ import json
 #         print("Неверный ввод")
 
 
-import requests
-import json
+# import requests
+# import json
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
+#
+# todos_by_user = {}
+#
+# for todo in todos:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo["userId"]] += 1
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1
+#
+# # print(max(todos_by_user, key=todos_by_user.get), "completed", max(todos_by_user.values()))
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)
+#
+# max_complete = top_users[0][1]
+# print(max_complete)
+#
+# users = []
+#
+# for user, num_complete in top_users:
+#     if num_complete < max_complete:
+#         break
+#     users.append(user)
+#
+# max_users = " and ".join([str(user) for user in users])
+# print(f"Users {max_users} completed {max_complete} Todos")
+#
+#
+# def keep(todo):
+#     completed = todo["completed"]
+#     max_count = str(todo["userId"]) in users
+#     return completed and max_count
+#
+#
+# with open("filter_file.json", "w") as f:
+#     filtered = list(filter(keep, todos))
+#     json.dump(filtered, f, indent=4)
 
-response = requests.get("https://jsonplaceholder.typicode.com/todos")
-todos = json.loads(response.text)
+import csv
 
-todos_by_user = {}
+# with open("data2.csv") as f:
+#     file_reader = csv.reader(f, delimiter=';')
+#     count = 0
+#
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"\t{row[0]} {row[1]}. Родился в {row[2]} году.")
+#         count += 1
 
-for todo in todos:
-    if todo["completed"]:
-        try:
-            todos_by_user[todo["userId"]] += 1
-        except KeyError:
-            todos_by_user[todo["userId"]] = 1
+# with open("data2.csv") as f:
+#     file_names = ['Имя', 'Профессия', 'Год рождения']
+#     file_reader = csv.DictReader(f, delimiter=";", fieldnames=file_names)
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         print(f"\t{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
+#         count += 1
 
-# print(max(todos_by_user, key=todos_by_user.get), "completed", max(todos_by_user.values()))
-top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
-print(top_users)
+# with open("student.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     writer.writerow(["Имя", "Класс", "Возраст"])
+#     writer.writerow(["Вася", 9, 15])
+#     writer.writerow(["Петя", 11, 16])
+#     writer.writerow(["Маша", 10, 17])
+#     writer.writerow(["Оля", 10, 18])
 
-max_complete = top_users[0][1]
-print(max_complete)
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+# with open("data_new.csv", "w") as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerow(data)
+#
+# with open("data_new.csv") as f:
+#     print(f.read())
 
-users = []
+# with open("student1.csv", "w") as f:
+#     names = ["Имя", "Возраст"]
+#     file_writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=names)
+#     file_writer.writeheader()
+#     file_writer.writerow({"Имя": "Вася", "Возраст": 15})
+#     file_writer.writerow({"Имя": "Петя", "Возраст": 16})
+#     file_writer.writerow({"Имя": "Маша", "Возраст": 17})
+#     file_writer.writerow({"Имя": "Оля", "Возраст": 18})
 
-for user, num_complete in top_users:
-    if num_complete < max_complete:
-        break
-    users.append(user)
+# data = [{
+#     'hostname': 'sw1',
+#     'location': 'London',
+#     'model': '3750',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw2',
+#     'location': 'Liverpool',
+#     'model': '3850',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw3',
+#     'location': 'Liverpool',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw4',
+#     'location': 'London',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }]
+#
+# with open("dict_writer.csv", "w") as f:
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=list(data[0].keys()))
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
 
-max_users = " and ".join([str(user) for user in users])
-print(f"Users {max_users} completed {max_complete} Todos")
+#                                           Парсинг
+
+from bs4 import BeautifulSoup
+
+# f = open("index.html").read()
+
+# soup = BeautifulSoup(f, "html.parser")
+# row = soup.find("div", class_="name").text
+# row = soup.find_all("div", class_="name")
+# row = soup.find_all("div", class_="row")[1].find("div", class_="links")
+# row = soup.find_all("div", {"data-set": "salary"})
+# row = soup.find("div", string="Alena").parent
+# row = soup.find("div", string="Alena").find_parent(class_="row")
+# row = soup.find("div", id="whois3").find_next_sibling()
+# row = soup.find("div", id="whois3").find_previous_sibling()
+# print(row)
+
+# def get_copywriter(tag):
+#     whois = tag.find("div", class_="whois")
+#     if "Copywriter" in whois.text:
+#         return tag
+#     return None
+#
+#
+# f = open("index.html").read()
+# soup = BeautifulSoup(f, "html.parser")
+# copywriter = []
+# row = soup.find_all("div", class_="row")
+# for i in row:
+#     cw = get_copywriter(i)
+#     if cw:
+#         copywriter.append(cw)
+#
+# print(copywriter)
+
+import re
+
+
+def get_salary(s):
+    pattern = r"\d+"
+    res = re.search(pattern, s).group()
+    print(res)
+
+
+f = open("index.html").read()
+soup = BeautifulSoup(f, "html.parser")
+salary = soup.find_all("div", {"data-set": "salary"})
+
+for i in salary:
+    get_salary(i.text)

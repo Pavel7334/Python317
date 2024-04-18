@@ -1,25 +1,21 @@
 import requests
 import json
+import csv
 
+# Получаем данные о задачах с удаленного сервера
 response = requests.get("https://jsonplaceholder.typicode.com/todos")
 todos = json.loads(response.text)
 
-# Функция для проверки, является ли задача завершенной
-def is_completed(todo):
-    return todo["completed"]
+# Определяем заголовки CSV файла
+csv_columns = ['userId', 'id', 'title', 'completed']
 
-# Словарь для хранения задач для каждого пользователя
-user_tasks = {"userId_5": [], "userId_10": []}
+# Открываем CSV файл для записи
+with open('todos.csv', 'w', newline='') as csvfile:
+    writer = csv.DictWriter(csvfile, delimiter=";", fieldnames=csv_columns)
 
-# Добавление завершенных задач для userId 5 и userId 10 в словарь
-for todo in todos:
-    if todo["userId"] == 5 and is_completed(todo):
-        user_tasks["userId_5"].append(todo)
-    elif todo["userId"] == 10 and is_completed(todo):
-        user_tasks["userId_10"].append(todo)
+    # Записываем заголовки
+    writer.writeheader()
 
-# Запись в JSON-файл
-with open("user_tasks.json", "w") as json_file:
-    json.dump(user_tasks, json_file, indent=4)
-
-print("Завершенные задачи для пользователей с userId 5 и userId 10 были сохранены в файл 'user_tasks.json'.")
+    # Записываем данные
+    for todo in todos:
+        writer.writerow(todo)
