@@ -6038,13 +6038,21 @@ import re
 # if __name__ == '__main__':
 #     main()
 
-from parsers import Parser
+# from parsers import Parser
+#
+#
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
 
 
-def main():
-    pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
-    pars.run()
+#                                               MVC
 
+# Model - Модель
+# View - вид или представление
+# Controller - контроллер
 
-if __name__ == '__main__':
-    main()
