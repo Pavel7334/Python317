@@ -6176,3 +6176,15 @@ with sqlite3.connect("db_4.db") as con:
     ORDER BY Price DESC
     LIMIT 2, 5
     """)
+
+    # res = cur.fetchall()  [(), ()]
+    # res = cur.fetchone()  ()
+    # print(res)
+    # res = cur.fetchmany(2)  # [()]
+    # print(res)
+
+    for res in cur:
+        print(res)
+
+
+
