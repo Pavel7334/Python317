@@ -1,7 +1,14 @@
+from fastapi import FastAPI, HTTPException
 import charset_normalizer
+from pydantic import BaseModel
+from typing import Optional
 
 import geometry
 from datetime import datetime
+from fastapi.testclient import TestClient
+
+app = FastAPI()
+client = TestClient(app)
 
 # first_name = "admin"
 # First_name = "admin"
@@ -6116,6 +6123,7 @@ import re
 
 import sqlite3
 
+
 # con = sqlite3.connect("profile.db")
 # cur = con.cursor()
 # cur.execute("""""")
@@ -6167,24 +6175,22 @@ import sqlite3
 # )""")
 
 
-with sqlite3.connect("db_4.db") as con:
-    cur = con.cursor()
-
-    cur.execute("""
-    SELECT *
-    FROM Ware
-    ORDER BY Price DESC
-    LIMIT 2, 5
-    """)
-
-    # res = cur.fetchall()  [(), ()]
-    # res = cur.fetchone()  ()
-    # print(res)
-    # res = cur.fetchmany(2)  # [()]
-    # print(res)
-
-    for res in cur:
-        print(res)
-
-
+# with sqlite3.connect("db_4.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""
+#     SELECT *
+#     FROM Ware
+#     ORDER BY Price DESC
+#     LIMIT 2, 5
+#     """)
+#
+#     # res = cur.fetchall()  [(), ()]
+#     # res = cur.fetchone()  ()
+#     # print(res)
+#     # res = cur.fetchmany(2)  # [()]
+#     # print(res)
+#
+#     for res in cur:
+#         print(res)
 
