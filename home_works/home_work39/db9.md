@@ -65,23 +65,21 @@ WHERE z.Id_Studenta IN (
 
 5.	Выведите студентов физико-технического факультета сдавших иностранный язык на 5.
 
-SELECT s.FIO
-FROM Student s
-WHERE s.ID_St IN (
-    SELECT e.Id_St
-    FROM Exzamen e
-    WHERE e.Predmet = 'Иностранный язык'
-      AND e.Ball = 5
-)
-AND s.[Group] IN (
-    SELECT g.[Group]
-    FROM G g
-    WHERE g.Kafedra IN (
-        SELECT k.Kafedra
-        FROM Kafedra k
-        WHERE k.Decanat = 'Физико-технический'
+SELECT FIO
+FROM Student
+WHERE ID_St IN
+(SELECT Id_St
+FROM Exzamen
+WHERE Predmet LIKE "Иностр. язык" AND Ball =5
+) AND "Group" IN
+(SELECT "Group"
+FROM G
+WHERE Kafedra IN
+    (SELECT Kafedra
+    FROM Kafedra
+    WHERE Decanat LIKE "Физико-технический"
     )
-);
+)
 
 
 6.	Подсчитать сколько различных предметов сдавалось в сессию.

@@ -1,5 +1,4 @@
 from fastapi import FastAPI, HTTPException
-import charset_normalizer
 from pydantic import BaseModel
 from typing import Optional
 
@@ -6193,4 +6192,46 @@ import sqlite3
 #
 #     for res in cur:
 #         print(res)
+
+
+import sqlite3
+
+cars_list = [
+    ("Audi", 52000),
+    ("Mercedes", 57000),
+    ("Skoda", 9000),
+    ("Volvo", 29000),
+    ("Bentley", 350000),]
+
+with sqlite3.connect("car.db") as con:
+    cur = con.cursor()
+
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS cars(
+        car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        model TEXT ,
+        price INTEGER
+    ) 
+    """)
+
+    cur.executescript("""
+    DELETE FROM cars WHERE model LIKE 'B%';
+    UPDATE cars SET price = price + 100;
+    """)
+
+    # cur.execute("UPDATE cars SET price = :Price where model LIKE 'B%'", {'Price': 0})
+
+    # cur.executemany("INSERT INTO cars VALUES (NULL, ?, ?)", cars_list)
+
+    # for car in cars_list:
+    #     cur.execute(f"INSERT INTO cars VALUES(NULL, ?, ?)", car)
+
+    # cur.execute("INSERT INTO cars VALUES(1, 'Audi', 52000)")
+    # cur.execute("INSERT INTO cars VALUES(2, 'Mercedes', 57000)")
+    # cur.execute("INSERT INTO cars VALUES(3, 'Skoda', 9000)")
+    # cur.execute("INSERT INTO cars VALUES(4, 'Volvo', 29000)")
+    # cur.execute("INSERT INTO cars VALUES(5, 'Bentley', 350000)")
+
+# con.commit() # Сохранить изменения
+# com.close() # Закрыть соединение
 
