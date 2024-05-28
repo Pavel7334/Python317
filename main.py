@@ -6122,7 +6122,6 @@ import re
 
 import sqlite3
 
-
 # con = sqlite3.connect("profile.db")
 # cur = con.cursor()
 # cur.execute("""""")
@@ -6194,44 +6193,214 @@ import sqlite3
 #         print(res)
 
 
-import sqlite3
+# import sqlite3
 
-cars_list = [
-    ("Audi", 52000),
-    ("Mercedes", 57000),
-    ("Skoda", 9000),
-    ("Volvo", 29000),
-    ("Bentley", 350000),]
+# cars_list = [
+#     ("Audi", 52000),
+#     ("Mercedes", 57000),
+#     ("Skoda", 9000),
+#     ("Volvo", 29000),
+#     ("Bentley", 350000),]
+#
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS cars(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT ,
+#         price INTEGER
+#     )
+#     """)
+#
+#     cur.executescript("""
+#     DELETE FROM cars WHERE model LIKE 'B%';
+#     UPDATE cars SET price = price + 100;
+#     """)
 
-with sqlite3.connect("car.db") as con:
-    cur = con.cursor()
+# cur.execute("UPDATE cars SET price = :Price where model LIKE 'B%'", {'Price': 0})
 
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS cars(
-        car_id INTEGER PRIMARY KEY AUTOINCREMENT,
-        model TEXT ,
-        price INTEGER
-    ) 
-    """)
+# cur.executemany("INSERT INTO cars VALUES (NULL, ?, ?)", cars_list)
 
-    cur.executescript("""
-    DELETE FROM cars WHERE model LIKE 'B%';
-    UPDATE cars SET price = price + 100;
-    """)
+# for car in cars_list:
+#     cur.execute(f"INSERT INTO cars VALUES(NULL, ?, ?)", car)
 
-    # cur.execute("UPDATE cars SET price = :Price where model LIKE 'B%'", {'Price': 0})
-
-    # cur.executemany("INSERT INTO cars VALUES (NULL, ?, ?)", cars_list)
-
-    # for car in cars_list:
-    #     cur.execute(f"INSERT INTO cars VALUES(NULL, ?, ?)", car)
-
-    # cur.execute("INSERT INTO cars VALUES(1, 'Audi', 52000)")
-    # cur.execute("INSERT INTO cars VALUES(2, 'Mercedes', 57000)")
-    # cur.execute("INSERT INTO cars VALUES(3, 'Skoda', 9000)")
-    # cur.execute("INSERT INTO cars VALUES(4, 'Volvo', 29000)")
-    # cur.execute("INSERT INTO cars VALUES(5, 'Bentley', 350000)")
+# cur.execute("INSERT INTO cars VALUES(1, 'Audi', 52000)")
+# cur.execute("INSERT INTO cars VALUES(2, 'Mercedes', 57000)")
+# cur.execute("INSERT INTO cars VALUES(3, 'Skoda', 9000)")
+# cur.execute("INSERT INTO cars VALUES(4, 'Volvo', 29000)")
+# cur.execute("INSERT INTO cars VALUES(5, 'Bentley', 350000)")
 
 # con.commit() # Сохранить изменения
 # com.close() # Закрыть соединение
 
+# import sqlite3
+#
+# con = None
+# try:
+#     con = sqlite3.connect("car.db")
+#     cur = con.cursor()
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS cars (
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT,
+#         price INTEGER
+#     );
+#     BEGIN;
+#     INSERT INTO cars VALUES(NULL, 'Renault', 22000);
+#     UPDATE cars SET price = price + 100;
+#     """)
+#     con.commit()
+# except sqlite3.Error as e:
+#     if con:
+#         con.rollback()
+#     print("Ошибка выполнения запроса")
+# finally:
+#     if con:
+#         con.close()
+
+# import sqlite3
+#
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#
+#     cur.executescript("""
+#     CREATE TABLE IF NOT EXISTS cars(
+#         car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         model TEXT ,
+#         price INTEGER
+#     );
+#     CREATE TABLE IF NOT EXISTS cost(
+#         name TEXT, tr_in INTEGER, buy INTEGER
+#     );
+#     """)
+#
+#     # cur.execute("INSERT INTO cars VALUES(NULL, 'Запорожец', 1000)")
+#     # last_row_id = cur.lastrowid
+#     # buy_car_id = 2
+#     # cur.execute("INSERT INTO cost VALUES('Илья', ?, ?)", (last_row_id, buy_car_id))
+#
+#     cur.execute("SELECT model, price FROM cars")
+#     # rows = cur.fetchall()
+#     # rows = cur.fetchone()
+#     # print(rows)
+#     # rows = cur.fetchmany(5)
+#     # print(rows)
+#     # print()
+#
+#     for res in cur:
+#         print(res[0])
+
+# import sqlite3
+
+
+# def read_ava(n):
+#     try:
+#         with open(f"avatars/{n}.png", "rb") as f:
+#             return f.read()
+#     except IOError as e:
+#         print(e)
+#         return False
+#
+#
+# def write_ava(name, data):
+#     try:
+#         with open(name, "wb") as f:
+#             f.write(data)
+#     except IOError as e:
+#         print(e)
+#         return False
+#     return True
+#
+#
+# with sqlite3.connect("car.db") as con:
+#     con.row_factory = sqlite3.Row
+#     cur = con.cursor()
+#
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS users (
+#         name TEXT,
+#         ava BLOB,
+#         score INTEGER
+#     )""")
+#
+#     # img = read_ava(1)
+#     # if img:
+#     #     binary = sqlite3.Binary(img)
+#     #     cur.execute("INSERT INTO users VALUES('Илья', ?, 1000)", (binary,))
+#
+#     cur.execute("SELECT ava FROM users")
+#     img = cur.fetchone()['ava']
+#
+#     write_ava("out.png", img)
+
+import sqlite3
+
+# with sqlite3.connect("car.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "w") as f:
+#         for sql in con.iterdump():
+#             f.write(sql)
+
+# for sql in con.iterdump(): # хранятся все запросы
+#     print(sql)
+
+
+# with sqlite3.connect("car_new.db") as con:
+#     cur = con.cursor()
+#
+#     with open("sql_dump.sql", "r") as f:
+#         sql = f.read()
+#         cur.executescript(sql)
+
+
+from jinja2 import Template
+
+
+# per = {"name": "Игорь", "age": 28}
+#
+# tm = Template("Мне {{ p.age }} лет. Меня зовут {{ p['name'] }}.")
+# msg = tm.render(p=per)
+# print(msg)
+
+# class Person:
+#     def __init__(self, name, age):
+#         self.name = name
+#         self.age = age
+#
+#     def get_name(self):
+#         return self.name
+#
+#
+# per = Person("Игорь", 28)
+#
+# tm = Template("Мне {{ p.age }} лет. Меня зовут {{ p.get_name() }}.")
+# msg = tm.render(p=per)
+# print(msg)
+
+cities = [
+    {"id": 1, "city": "Москва"},
+    {"id": 2, "city": "Новосибирск"},
+    {"id": 3, "city": "Владивосток"},
+    {"id": 4, "city": "Красноярск"},
+    {"id": 5, "city": "Кемерово"}
+]
+
+link = """
+<select name="cities">
+    {% for city in cities -%}
+        {% if city.id > 3 -%}
+            <option value="{{ city.id }}">{{ city.city }}</option>
+        {% elif city.city == "Москва" %}
+            <option>{{ city.city }}</option>
+        {% else -%}
+            {{ city.city }}
+        {% endif -%}
+    {% endfor -%}
+</select>
+"""
+tm = Template(link)
+msg = tm.render(cities=cities)
+
+print(msg)
