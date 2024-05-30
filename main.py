@@ -6355,9 +6355,6 @@ import sqlite3
 #         cur.executescript(sql)
 
 
-from jinja2 import Template
-
-
 # per = {"name": "Игорь", "age": 28}
 #
 # tm = Template("Мне {{ p.age }} лет. Меня зовут {{ p['name'] }}.")
@@ -6379,28 +6376,80 @@ from jinja2 import Template
 # msg = tm.render(p=per)
 # print(msg)
 
-cities = [
-    {"id": 1, "city": "Москва"},
-    {"id": 2, "city": "Новосибирск"},
-    {"id": 3, "city": "Владивосток"},
-    {"id": 4, "city": "Красноярск"},
-    {"id": 5, "city": "Кемерово"}
-]
+# cities = [
+#     {"id": 1, "city": "Москва"},
+#     {"id": 2, "city": "Новосибирск"},
+#     {"id": 3, "city": "Владивосток"},
+#     {"id": 4, "city": "Красноярск"},
+#     {"id": 5, "city": "Кемерово"}
+# ]
+#
+# link = """
+# <select name="cities">
+#     {% for city in cities -%}
+#         {% if city.id > 3 -%}
+#             <option value="{{ city.id }}">{{ city.city }}</option>
+#         {% elif city.city == "Москва" %}
+#             <option>{{ city.city }}</option>
+#         {% else -%}
+#             {{ city.city }}
+#         {% endif -%}
+#     {% endfor -%}
+# </select>
+# """
 
-link = """
-<select name="cities">
-    {% for city in cities -%}
-        {% if city.id > 3 -%}
-            <option value="{{ city.id }}">{{ city.city }}</option>
-        {% elif city.city == "Москва" %}
-            <option>{{ city.city }}</option>
-        {% else -%}
-            {{ city.city }}
-        {% endif -%}
-    {% endfor -%}
-</select>
+from jinja2 import Template
+#
+# cars = [
+#     {'model': 'Audi', 'price': 23000},
+#     {'model': 'Skoda', 'price': 17300},
+#     {'model': 'Renault', 'price': 44300},
+#     {'model': 'Wolksvagen', 'price': 21300}
+# ]
+#
+# # tp1 = "{{ (cs | min(attribute='price')).model }}"
+# # tp1 = "{{ cs | random }}"
+# tp1 = "{{ cs | replace('Audi', 'Lada') }}"
+
+html = """
+{% macro get_input(name, value='', type='text', size=20) %}
+    <input type="{{ type }}" name="{{ name }}" value="{{ value }}" size="{{ size }}">
+{% endmacro %}
+
+
+<p>
+    {{ get_input('username') }}
+    {{ get_input('email') }}
+    {{ get_input('password', type='password') }}
+</p>
 """
-tm = Template(link)
-msg = tm.render(cities=cities)
+
+tm = Template(html)
+msg = tm.render()
 
 print(msg)
+
+# from jinja2 import Environment, FileSystemLoader
+
+# persons = [
+#     {"name": "Алексей", "year": 18, "weight": 78.5},
+#     {"name": "Никита", "year": 28, "weight": 82.3},
+#     {"name": "Виталий", "year": 33, "weight": 94.0}
+# ]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template("main.html")
+# msg = tm.render(users=persons, title="About Jinja")
+# print(msg)
+
+# subs = ["Культура", "Музыка", "Спорт", "Искусство"]
+#
+# file_loader = FileSystemLoader('templates')
+# env = Environment(loader=file_loader)
+#
+# tm = env.get_template("about.html")
+# msg = tm.render(list_table=subs)
+#
+# print(msg)
