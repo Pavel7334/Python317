@@ -6,7 +6,7 @@
     {% if title %}
     <title>{{ title }}</title>
     {% else %}
-    <title>Про Flask</title>
+    <title>АвтоМастер</title>
     {% endif %}
     {% endblock %}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
@@ -21,12 +21,7 @@
 </ul>
 {% endblock %}
 <div class="content">
-    {% if title %}
-    <h1>{{ title }}</h1>
-    {% else %}
-    <h1>Про Flask</h1>
-    {% endif %}
-    {% endblock %}
+{% endblock %}
 </div>
 </body>
 </html>
