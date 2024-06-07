@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<div class="review-detail-container">
+    <h1>{{ title }}</h1>
+    <div class="comment-detail-container">
+        <div class="comment-detail">
+            <h2>{{ comment.username }}</h2>
+            <p>{{ comment.comment }}</p>
+        </div>
+        <form action="{{ url_for('delete_review', comment_id=comment.id) }}" method="post">
+            <button type="submit" class="btn btn-danger">Удалить отзыв</button>
+        </form>
+    </div>
+    <div style="display: flex; justify-content: space-between;">
+        <a href="{{ url_for('reviews') }}" class="btn btn-secondary">Назад к отзывам</a>
+        <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>
+    </div>
+</div>
+{% endblock %}
