@@ -1,29 +1,36 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Расширяет шаблон base.html. Это означает, что текущий шаблон будет наследовать все блоки и содержимое из base.html -->
 
 {% block content %}
-{{ super() }}
-<div class="comment-form-container">
-    <h1>Оставить отзыв</h1>
+{{ super() }}  <!-- Вставляет содержимое родительского блока content из расширенного шаблона base.html -->
+
+<div class="comment-form-container">  <!-- Открывает контейнер с классом comment-form-container для стилизации содержимого -->
+    <h1>Оставить отзыв</h1>  <!-- Заголовок первого уровня для названия секции -->
+
+    <!-- Блок для отображения сообщений (успех или ошибка) после отправки формы -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    {% for category, message in messages %}
-    <div class="alert alert-{{ category }}">
-        {{ message }}
-    </div>
-    {% endfor %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">  <!-- Контейнер для каждого сообщения, класс зависит от категории сообщения (успех или ошибка) -->
+            {{ message }}  <!-- Вывод сообщения -->
+        </div>
+        {% endfor %}
     {% endif %}
     {% endwith %}
+
+    <!-- Форма для отправки комментария методом POST -->
     <form class="comment-form" action="/comments" method="post">
-        <div class="form-group">
-            <label for="username">Имя:</label>
-            <input type="text" id="username" name="username" required>
+        <div class="form-group">  <!-- Группа полей формы -->
+            <label for="username">Имя:</label>  <!-- Метка для поля ввода имени -->
+            <input type="text" id="username" name="username" required>  <!-- Поле ввода имени с обязательным заполнением -->
         </div>
-        <div class="form-group">
-            <label for="comment">Отзыв:</label>
-            <textarea id="comment" name="comment" rows="4" required></textarea>
+        <div class="form-group">  <!-- Группа полей формы -->
+            <label for="comment">Отзыв:</label>  <!-- Метка для текстового поля отзыва -->
+            <textarea id="comment" name="comment" rows="4" required></textarea>  <!-- Текстовое поле для ввода отзыва с обязательным заполнением -->
         </div>
-        <button type="submit" class="btn">Отправить</button>
+        <button type="submit" class="btn">Отправить</button>  <!-- Кнопка отправки формы с классом btn для стилизации -->
     </form>
 </div>
-<div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>
+
+<div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>  <!-- Контейнер с фоновым изображением, URL которого передается в переменной background_image_url -->
+
 {% endblock %}

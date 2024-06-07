@@ -1,21 +1,25 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Расширяет шаблон base.html. Это означает, что текущий шаблон будет наследовать все блоки и содержимое из base.html -->
 
 {% block content %}
-{{ super() }}
-<div class="review-detail-container">
-    <h1>{{ title }}</h1>
-    <div class="comment-detail-container">
-        <div class="comment-detail">
-            <h2>{{ comment.username }}</h2>
-            <p>{{ comment.comment }}</p>
+    {{ super() }}  <!-- Вставляет содержимое родительского блока content из расширенного шаблона base.html -->
+
+    <div class="review-detail-container">  <!-- Открывает контейнер с классом review-detail-container для стилизации содержимого -->
+        <h1>{{ title }}</h1>  <!-- Заголовок первого уровня с переменной title, содержащей заголовок страницы -->
+
+        <div class="comment-detail-container">  <!-- Открывает контейнер с классом comment-detail-container для стилизации содержимого -->
+            <div class="comment-detail">  <!-- Открывает контейнер с классом comment-detail для стилизации содержимого комментария -->
+                <h2>{{ comment.username }}</h2>  <!-- Заголовок второго уровня с именем пользователя из комментария -->
+                <p>{{ comment.comment }}</p>  <!-- Параграф с текстом комментария -->
+            </div>
+            <form action="{{ url_for('delete_review', comment_id=comment.id) }}" method="post">  <!-- Форма для удаления отзыва с отправкой POST-запроса -->
+                <button type="submit" class="btn btn-danger">Удалить отзыв</button>  <!-- Кнопка для отправки формы с классом btn btn-danger для стилизации -->
+            </form>
         </div>
-        <form action="{{ url_for('delete_review', comment_id=comment.id) }}" method="post">
-            <button type="submit" class="btn btn-danger">Удалить отзыв</button>
-        </form>
+
+        <div style="display: flex; justify-content: space-between;">  <!-- Div с гибким контейнером для выравнивания элементов по горизонтали и распределения пространства -->
+            <a href="{{ url_for('reviews') }}" class="btn btn-secondary">Назад к отзывам</a>  <!-- Ссылка для возврата к списку отзывов с классом btn btn-secondary для стилизации -->
+            <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>  <!-- Контейнер с фоновым изображением, URL которого передается в переменной background_image_url -->
+        </div>
     </div>
-    <div style="display: flex; justify-content: space-between;">
-        <a href="{{ url_for('reviews') }}" class="btn btn-secondary">Назад к отзывам</a>
-        <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>
-    </div>
-</div>
+
 {% endblock %}

@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">
-    <link rel="icon" href="/favicon16.png" type="image/png" sizes="16x16">
+    <meta charset="UTF-8">  <!-- Определяет кодировку документа как UTF-8 -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">  <!-- Иконка сайта в формате SVG, поддерживаемая любым размером -->
+    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">  <!-- Иконка сайта в формате PNG размером 32x32 -->
+    <link rel="icon" href="/favicon16.png" type="image/png" sizes="16x16">  <!-- Иконка сайта в формате PNG размером 16x16 -->
+
     {% block title %}
+    <!-- Блок для определения заголовка страницы -->
     {% if title %}
-    <title>{{ title }}</title>
+    <title>{{ title }}</title>  <!-- Устанавливает заголовок страницы, если переменная title определена -->
     {% else %}
-    <title>АвтоМастер</title>
+    <title>АвтоМастер</title>  <!-- Устанавливает заголовок страницы как "АвтоМастер", если переменная title не определена -->
     {% endif %}
     {% endblock %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">  <!-- Подключает файл стилей style.css из папки static -->
 </head>
 <body>
 {% block content %}
-{% block menu %}
-<ul class="menu">
-    {% for m in menu %}
-    <li><a href="{{ m.url }}">{{ m.name }}</a></li>
-    {% endfor %}
-</ul>
+    <!-- Блок для основного содержимого страницы -->
+    {% block menu %}
+    <!-- Блок для меню навигации -->
+    <ul class="menu">  <!-- Ненумерованный список с классом menu для стилизации -->
+        {% for m in menu %}
+        <!-- Перебирает элементы меню, определенные в переменной menu -->
+        <li><a href="{{ m.url }}">{{ m.name }}</a></li>  <!-- Элемент списка с ссылкой на соответствующий URL и именем -->
+        {% endfor %}
+    </ul>
+    {% endblock %}
+    <div class="content">  <!-- Контейнер с классом content для основного содержимого страницы -->
 {% endblock %}
-<div class="content">
-{% endblock %}
-</div>
+    </div>
 </body>
 </html>

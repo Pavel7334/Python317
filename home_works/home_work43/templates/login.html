@@ -1,27 +1,32 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Расширяет шаблон base.html. Это означает, что текущий шаблон будет наследовать все блоки и содержимое из base.html -->
 
 {% block content %}
-    {{ super() }}
-    <div class="login-container">
-        <h1>Авторизация</h1>
+    {{ super() }}  <!-- Вставляет содержимое родительского блока content из расширенного шаблона base.html -->
+
+    <div class="login-container">  <!-- Открывает контейнер с классом login-container для стилизации содержимого -->
+        <h1>Авторизация</h1>  <!-- Заголовок первого уровня для названия секции -->
+
         {% if success_message %}
-            <div class="success-message">{{ success_message }}</div>
+            <div class="success-message">{{ success_message }}</div>  <!-- Контейнер для отображения сообщения об успешной авторизации -->
         {% elif error_message %}
-            <div class="error-message">{{ error_message }}</div>
-            <a href="{{ url_for('login') }}" class="btn">Повторить ввод</a>
+            <div class="error-message">{{ error_message }}</div>  <!-- Контейнер для отображения сообщения об ошибке авторизации -->
+            <a href="{{ url_for('login') }}" class="btn">Повторить ввод</a>  <!-- Ссылка для повторного ввода данных с классом btn для стилизации -->
         {% else %}
+            <!-- Форма для ввода данных пользователя -->
             <form action="{{ url_for('login') }}" method="post">
-                <div class="form-group">
-                    <label for="username">Имя:</label>
-                    <input type="text" id="username" name="username" required>
+                <div class="form-group">  <!-- Группа полей формы -->
+                    <label for="username">Имя:</label>  <!-- Метка для поля ввода имени -->
+                    <input type="text" id="username" name="username" required>  <!-- Поле ввода имени с обязательным заполнением -->
                 </div>
-                <div class="form-group">
-                    <label for="psw">Пароль:</label>
-                    <input type="password" id="psw" name="psw" required>
+                <div class="form-group">  <!-- Группа полей формы -->
+                    <label for="psw">Пароль:</label>  <!-- Метка для поля ввода пароля -->
+                    <input type="password" id="psw" name="psw" required>  <!-- Поле ввода пароля с обязательным заполнением -->
                 </div>
-                <input type="submit" value="Войти" class="btn">
+                <input type="submit" value="Войти" class="btn">  <!-- Кнопка отправки формы с классом btn для стилизации -->
             </form>
         {% endif %}
     </div>
-    <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>
+
+    <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>  <!-- Контейнер с фоновым изображением, URL которого передается в переменной background_image_url -->
+
 {% endblock %}

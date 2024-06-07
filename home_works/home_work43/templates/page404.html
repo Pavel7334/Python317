@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {{ super() }}
+{{ super() }}
 
-<p>Вернуться на <a href="/">главную</a> </p>
-
+<div class="return-home">
+    <h1>Такой страницы нет</h1>
+    <p>Вернуться на <a href="/">главную</a></p>
+</div>
+<div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>
 {% endblock %}

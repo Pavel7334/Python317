@@ -1,18 +1,22 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Расширяет шаблон base.html. Это означает, что текущий шаблон будет наследовать все блоки и содержимое из base.html -->
 
 {% block content %}
-{{ super() }}
-<div class="reviews-container">
-    <h1>{{ title }}</h1>
-    <div class="comments-grid">
-        {% for comment in comments %}
-            <div class="comment-card">
-                <h2>{{ comment.username }}</h2>
-                <p>{{ comment.comment[:250] }}{% if comment.comment|length > 100 %}...{% endif %}</p>
-                <a href="{{ url_for('review', comment_id=comment.id) }}" class="btn btn-primary">Просмотреть отзыв</a>
-            </div>
-        {% endfor %}
+    {{ super() }}  <!-- Вставляет содержимое родительского блока content из расширенного шаблона base.html -->
+
+    <div class="reviews-container">  <!-- Открывает контейнер с классом reviews-container для стилизации содержимого -->
+        <h1>{{ title }}</h1>  <!-- Заголовок первого уровня с переменной title, содержащей заголовок страницы -->
+
+        <div class="comments-grid">  <!-- Открывает сетку комментариев с классом comments-grid -->
+            {% for comment in comments %}  <!-- Цикл для перебора комментариев -->
+                <div class="comment-card">  <!-- Открывает карточку комментария с классом comment-card -->
+                    <h2>{{ comment.username }}</h2>  <!-- Заголовок второго уровня с именем пользователя -->
+                    <p>{{ comment.comment[:250] }}{% if comment.comment|length > 100 %}...{% endif %}</p>  <!-- Параграф с текстом комментария, обрезанным до 250 символов -->
+                    <a href="{{ url_for('review', comment_id=comment.id) }}" class="btn btn-primary">Просмотреть отзыв</a>  <!-- Ссылка для просмотра подробной информации о комментарии -->
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-<div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>
+
+    <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>  <!-- Контейнер с фоновым изображением, URL которого передается в переменной background_image_url -->
+
 {% endblock %}

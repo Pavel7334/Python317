@@ -1,20 +1,24 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Расширяет шаблон base.html. Это означает, что текущий шаблон будет наследовать все блоки и содержимое из base.html -->
 
 {% block content %}
-    {{ super() }}
-    <div class="appointment-container">
-        <h1>Запись на СТО</h1>
+    {{ super() }}  <!-- Вставляет содержимое родительского блока content из расширенного шаблона base.html -->
+
+    <div class="appointment-container">  <!-- Открывает контейнер с классом appointment-container для стилизации содержимого -->
+        <h1>Запись на СТО</h1>  <!-- Заголовок первого уровня для названия секции -->
+
+        <!-- Форма для записи на СТО, отправляющая данные методом POST -->
         <form method="post" action="{{ url_for('appointment') }}">
-            <div class="form-group">
-                <label for="date">Дата:</label>
-                <input type="date" id="date" name="date" required>
+            <div class="form-group">  <!-- Группа полей формы -->
+                <label for="date">Дата:</label>  <!-- Метка для поля ввода даты -->
+                <input type="date" id="date" name="date" required>  <!-- Поле ввода даты с обязательным заполнением -->
             </div>
-            <div class="form-group">
-                <label for="time">Время:</label>
-                <input type="time" id="time" name="time" required>
+            <div class="form-group">  <!-- Группа полей формы -->
+                <label for="time">Время:</label>  <!-- Метка для поля ввода времени -->
+                <input type="time" id="time" name="time" required>  <!-- Поле ввода времени с обязательным заполнением -->
             </div>
-            <input type="submit" value="Записаться" class="btn">
+            <input type="submit" value="Записаться" class="btn">  <!-- Кнопка отправки формы с классом btn для стилизации -->
         </form>
     </div>
-    <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>
+
+    <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>  <!-- Контейнер с фоновым изображением, URL которого передается в переменной background_image_url -->
 {% endblock %}

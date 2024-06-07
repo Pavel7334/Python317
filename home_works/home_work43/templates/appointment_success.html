@@ -1,11 +1,13 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %}  <!-- Расширяет шаблон base.html. Это означает, что текущий шаблон будет наследовать все блоки и содержимое из base.html -->
 
 {% block content %}
-    {{ super() }}
-    <div class="success-container">
-        <h1>Запись успешно оформлена</h1>
-        <p>Вы записаны на СТО на дату: {{ date }} в {{ time }}</p>
-        <a href="{{ url_for('index') }}" class="btn">Вернуться на главную</a>
+    {{ super() }}  <!-- Вставляет содержимое родительского блока content из расширенного шаблона base.html -->
+
+    <div class="success-container">  <!-- Открывает контейнер с классом success-container для стилизации содержимого -->
+        <h1>Запись успешно оформлена</h1>  <!-- Заголовок первого уровня для названия секции -->
+        <p>Вы записаны на СТО на дату: {{ date }} в {{ time }}</p>  <!-- Абзац с подтверждением даты и времени записи, значения которых передаются в переменных date и time -->
+        <a href="{{ url_for('index') }}" class="btn">Вернуться на главную</a>  <!-- Ссылка для возвращения на главную страницу с классом btn для стилизации -->
     </div>
-     <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>
+
+    <div class="background-image" style="background-image: url('{{ background_image_url }}');"></div>  <!-- Контейнер с фоновым изображением, URL которого передается в переменной background_image_url -->
 {% endblock %}
