@@ -2,9 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">  <!-- Определяет кодировку документа как UTF-8 -->
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">  <!-- Иконка сайта в формате SVG, поддерживаемая любым размером -->
-    <link rel="icon" href="/favicon.png" type="image/png" sizes="32x32">  <!-- Иконка сайта в формате PNG размером 32x32 -->
-    <link rel="icon" href="/favicon16.png" type="image/png" sizes="16x16">  <!-- Иконка сайта в формате PNG размером 16x16 -->
 
     {% block title %}
     <!-- Блок для определения заголовка страницы -->
@@ -25,7 +22,7 @@
     <ul class="menu">  <!-- Ненумерованный список с классом menu для стилизации -->
         {% for m in menu %}
         <!-- Перебирает элементы меню, определенные в переменной menu -->
-        <li><a href="{{ m.url }}">{{ m.name }}</a></li>  <!-- Элемент списка с ссылкой на соответствующий URL и именем -->
+        <li><a href="/{{ m.url }}">{{ m.name }}</a></li>  <!-- Элемент списка с ссылкой на соответствующий URL и именем -->
         {% endfor %}
     </ul>
     {% endblock %}

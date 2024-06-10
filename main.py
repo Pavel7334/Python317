@@ -6449,7 +6449,7 @@ print(msg)
 # file_loader = FileSystemLoader('templates')
 # env = Environment(loader=file_loader)
 #
-# tm = env.get_template("about.html")
+# tm = env.get_template("description.html")
 # msg = tm.render(list_table=subs)
 #
 # print(msg)

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+<div class="container">
+    <h1>Генератор паролей</h1>
+    <form action="{% url 'password' %}" method="get">
+        <p><select name="length">
+            {% for i in lst %}
+            {% if i == 12 %}
+            <option value="{{ i }}" selected>{{ i }}</option>
+            {% else %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endif %}
+            {% endfor %}
+        </select> Количество символов</p>
+        <p>
+            <label for="up">
+                <input type="checkbox" name="uppercase" id="up">Верхний регистр
+            </label>
+        </p>
+        <p>
+            <label for="num">
+                <input type="checkbox" name="numbers" id="num">Цифры
+            </label>
+        </p>
+        <p>
+            <label for="spec">
+                <input type="checkbox" name="special" id="spec">Специальные символы
+            </label>
+        </p>
+
+        <input type="submit" value="Сгенерировать пароль">
+        <p class="back-link"><a href="{% url 'description' %}">Что такое генератор паролей?</a></p>
+    </form>
+</div>
+</body>
+</html>

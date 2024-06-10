@@ -34,8 +34,8 @@ def index():
 def about():
     # URL фонового изображения для страницы "О сайте"
     background_image_url = 'https://bogatyr.club/uploads/posts/2023-03/1678229039_bogatyr-club-p-detali-avtomobilya-foni-krasivo-85.jpg'
-    # Рендеринг шаблона about.html с параметрами
-    return render_template('about.html', background_image_url=background_image_url, title='О сайте', menu=menu)
+    # Рендеринг шаблона description.html с параметрами
+    return render_template('description.html', background_image_url=background_image_url, title='О сайте', menu=menu)
 
 
 # Обработчик маршрута для профиля пользователя
