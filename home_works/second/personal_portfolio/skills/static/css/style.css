@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    background: #f0f0ff; /* Более светлый и приятный фоновый цвет */
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    color: #333; /* Основной цвет текста */
+}
+
+.wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 60px;
+}
+
+.text {
+    width: calc(25% - 40px); /* Обновлено для размещения 4 блоков в строку с учетом отступов */
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 20px 10px; /* Обновленные отступы */
+    background: #fff; /* Белый фон для блоков */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для блоков */
+    transition: transform 0.3s, box-shadow 0.3s; /* Анимация при наведении */
+}
+
+.text:hover {
+    transform: translateY(-10px); /* Смещение блока вверх при наведении */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Более сильная тень при наведении */
+}
+
+.element, .count {
+    background: lightyellow;
+    border: 6px solid #FFF;
+    margin: 20px 0;
+    padding: 10px; /* Добавлены внутренние отступы */
+    border-radius: 8px; /* Закругленные углы */
+}
+
+.block img {
+    max-width: 100%; /* Изменено на 100% для лучшей адаптивности */
+    border-radius: 8px; /* Закругленные углы для изображений */
+}
+
+.content h1 {
+    text-align: center;
+    margin: 60px 0 40px;
+    font-size: 36px;
+    color: #333; /* Цвет заголовка */
+}
+
+.img + h2, .text h2 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 30px;
+    color: #555; /* Цвет заголовка 2 уровня */
+}
+
+.img {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.img img {
+    border: 6px solid #FFF;
+    border-radius: 8px; /* Закругленные углы для изображений */
+}
