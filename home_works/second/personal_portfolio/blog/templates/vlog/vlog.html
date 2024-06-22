@@ -1,0 +1,18 @@
+{% extends 'skills/base.html' %}
+
+{% block content %}
+
+<h1>Влог</h1>
+<h2 class="count">Постов: {{ vlogs|length }}</h2>
+{%  for vlog in vlogs %}
+<div class="element">
+    <h2 class="top"><a href="{%  url 'detail' vlog_id=vlog.id %}">{{ vlog.title }}</a></h2>
+    <div class="blog_text">
+        <p>{{ vlog.data|date:'d.m.Y' }}</p>
+        <p>{{ vlog.description|striptags|truncatechars:360 }}</p>
+    </div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

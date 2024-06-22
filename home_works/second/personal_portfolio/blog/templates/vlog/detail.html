@@ -1,0 +1,11 @@
+{% extends 'skills/base.html' %}
+
+{% block content %}
+
+<div class="detail">
+    <h1>{{ vlog.title }}</h1>
+    <h2>{{ vlog.data|date:'j E Y' }}</h2>
+    {{ vlog.description|safe }}
+</div>
+
+{% endblock %}
