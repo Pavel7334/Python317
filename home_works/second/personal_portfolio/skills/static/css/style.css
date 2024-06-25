@@ -185,3 +185,26 @@ body{
     color: #3498db;
 }
 
+
+/* Пример стилей для кнопок и ссылок */
+.menu ul li a, .menu ul li form .top_btn, .menu ul li .top_btn {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.menu ul li a:hover, .menu ul li form .top_btn:hover, .menu ul li .top_btn:hover {
+    background-color: #0056b3;
+}
+
+/* Красный цвет текста */
+.red-text {
+    color: red;
+}
+
+/* Дополнительные стили, если необходимо */

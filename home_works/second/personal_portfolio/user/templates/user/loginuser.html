@@ -1,0 +1,17 @@
+{% extends 'skills/base.html' %}
+
+{% block content %}
+
+<h1>Авторизация:</h1>
+
+{% if error %}
+    <h3>{{ error }}</h3>
+{% endif %}
+
+<form method="post" class="bg">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn">Авторизация</button>
+</form>
+
+{% endblock %}

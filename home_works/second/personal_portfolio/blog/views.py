@@ -20,3 +20,4 @@ def vlog_detail(request, vlog_id):
 
 def about(request):
     return render(request, 'about/about.html')
+
